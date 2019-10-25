@@ -1,0 +1,44 @@
+AEON: Astronomical Event Observatory Network
+LPG:
+VIRGO:
+WA:
+DESC: Dark Energy Science Collaboration
+REC:
+USA:
+QDS:
+TOM:
+SSSC:
+MOS:
+WFIRST:
+LOI:
+VTP:
+LONI:
+AZ:
+HOW:
+CBW:
+LIGO:
+CA:
+PPDB:
+BATSE:
+APC:
+ANTARES: Arizona-NOAO Temporal Analysis and Response to Events System
+BACODINE:
+AGN:
+SN:
+IV:
+MLG:
+MPC:
+MARS:
+DE:
+SOAR:
+LAFS:
+END:
+AMPEL:
+NY:
+TOMS:
+TVS:
+SMWLV:
+GIT:
+ID:
+SEDM:
+TVSSC:

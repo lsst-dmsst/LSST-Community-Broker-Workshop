@@ -1,0 +1,38 @@
+% An overview of alert production in LSST, plans, policies and data products
+% summary and pushing out to pther documents 
+% Discussion about making PPDB public - not final so can't make public byu was a significant dosucssion    
+% key findings, outcomes, 
+\section{LSST Alert Production and Data Products (Eric)} \label{sec:alertproduction}
+
+LSST's alert stream provides near-real-time updates about all the time-variable objects LSST detects.
+LSST will find transient, variable, and moving objects using image differencing.
+The alert production pipelines will take each new image and subtract a matched, coadded template image built from the last Data Release.
+All sources---positive or negative---detected at 5$\sigma$ in the resulting difference image will be create \texttt{DIASources} and spawn alerts.  
+Algorithmic details of the pipeline processing are described in LDM-151 \citep{LDM-151}.
+
+The alert packets will include not only the triggering \texttt{DIASource} records but also a variety of contextual information to allow downstream science users to make rapid decisions about whether an alert is interesting.
+This information includes the associated \texttt{DIAObject} record, any past measurements of the source in the last twelve months, and image cutouts.  
+A full accounting of the alert packet contents is specified in the Data Products Definition Document \citep{LSE-163}.
+Alerts are then streamed to community brokers and the LSST Alert Filtering Service (\S \ref{sec:archandtech}), and the \texttt{DIASource} and \texttt{DIAObject} records are stored in the Prompt Products Database (PPDB) for later query.
+
+An expanded overview of the Alert Production system as well as discussion of the selection of community brokers is described in  LDM-612 \citep{LDM-612}.
+
+During the broker workshop, several discussions emerged about the contents of the alert packet and whether they were optimal for enabling follow-up of transient events.
+Topics included whether postage stamps should they be included in all alert packets, or if a public cutout service be sufficient; how the size of postage stamps affects classification; what variability characterization parameters should be included in alerts; whether classifiers have special needs for the types photometric redshifts computed in the Data Releases; and whether the association to three nearby static sky stars and extended objects was sufficient.
+
+\nrec
+{alertcontents}
+{Review the contents of the Alert packets}
+{DM Science should review the alert packet contents with the science collaborations, particularly the inclusion and size of the postage stamps, the variability characterization parameters, and details of the static sky association.}
+
+Workshop participants discussed use cases for the realtime alert stream compared to the queryable PPDB, which contains the \texttt{DIASource} and \texttt{DIAObject} records in a relational database.
+Currently, the PPDB is user-queryable by scientists with LSST data rights 24 hours after the data is taken.
+This makes it likely that brokers would re-create databases like the PPDB from the alert packet contents.
+A LONI from the DESC collaboration proposed replicating the PPDB on a daily basis.
+
+\nrec
+{ppdbpublic}
+{Investigate making replicas of the PPDB available, and the PPDB contents public}
+{DM Science should consider whether the PPDB can be considered a public data product and how technically it might be made available to brokers. 
+}
+

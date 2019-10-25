@@ -1,0 +1,65 @@
+\section{Architecture and Technologies (Eric) } \label{sec:archandtech}
+
+\subsection{Streaming technologies for high-rate alert steams}
+
+LSST has baselined the open-source distributed streaming platform Kafka\footnote{\url{https://kafka.apache.org/}} for distributing its ten million nightly alerts.
+Kakfa is a low-latency, fault tolerant message queue used widely in commercial industry.
+In addition to on-premises hosting, managed installations of Kafka are available on commercial cloud providers such as AWS\footnote{\url{https://aws.amazon.com/msk/}} and the Confluent Cloud\footnote{\url{https://www.confluent.io/confluent-cloud/}}.
+Scale tests during LSST construction have shown that Kafka meets LSST's performance requirements \citep{DMTN-028}. 
+
+The baselined alert serialization is Apache Avro\footnote{\url{https://avro.apache.org/}}, a open-source schema-ed binary format widely used with Kafka.
+
+Since 2018 the ZTF project has been distributing LSST-like alerts to community brokers using Kafka \citep{Patterson:19:ZTFAlerts}.
+ZTF averages 1025 alerts per image, and takes one image every 40 seconds.
+Each ZTF alerts is about 70 kB (although ZTF alerts contain less catalog information than LSST alerts, they have an extra cutout and an uncompressed Avro schema). 
+This means that the LSST alert stream is a factor of 11.5 larger in number of alerts per second and a factor of 13.4 larger in data rate than the total ZTF alert stream.
+Only 40\% of the ZTF alerts contribute to the public alert stream.
+
+Some brokers demonstrated or discussed tools for stream processing of ZTF and LSST alerts.
+The Fink broker is built on the open-source Spark Streaming library.
+ANTARES built a custom Python-based filtering system.
+AMPEL using a multi-stage custom processing system that annotates, cross-matches, and filters alerts.
+
+\subsection{Databases}
+
+Many brokers currently running on ZTF alerts are storing alerts (or data extracted from alerts) in databases.
+Popular choices include both relational databases such as Postgres as well as NoSQL solutions such as MongoDB.
+Several brokers also retained the original ZTF alert packets in an object store or similar.
+
+As brokers prepare for LSST scale they are considering additional open-source database technologies such as Apache Cassandra and Apache Ignite.
+Managed cloud databases such as Google BigQuery offer a cloud-native approach. 
+LSST's Qserv \citep{2011Wang:2011:QDS:2063348.2063364} is another potential candidate.
+
+\subsection{Hierarchical or networked systems of brokers}
+
+For both scientific and technical reasons we expect brokers, TOMs, and related systems to develop into a networked ecosystem, where alerts may pass from LSST through multiple brokers before reaching a science user or followup facility.
+Broker systems along the way may add value through classification or crossmatch and enable more effective filtering to subsets of events of interest.
+The forwarding function itself was envisioned by the original VOEvent broker concept, and helps relieve the bandwidth pressure on the transfer from the LSST Data Facility.
+
+We discussed how LSST might facilitate the development of such broker networks.
+One possibility would be to favor selection of brokers who are willing to forward alerts to other ``downstream'' brokers.
+
+An alternative would be to investigate ways for LSST to supply alerts directly to a larger number of community brokers.
+This might be accomplished by allocating more outbound bandwidth from the LSST Data Facility, providing pre-filtered streams or ``light'' alerts with reduced contents, setting up simple alert forwarding systems in other locations, increasing alert transmission latency, and/or providing copies of the alert stream or PPDB in the cloud.
+
+Having some brokers co-located with the LSST Data Facility at NCSA would also ease outbound bandwidth constraints.
+At present agreements to co-locate would be developed by the broker teams and NCSA directly, without LSST Project involvement.
+
+\nrec{expandstreams}
+{Investigate possibilities for expanding alert stream access}
+{Investigate options for providing alerts to a larger number of brokers. 
+Determine trade space of cost, science loss due to reduction in alert stream contents, and science gain due to expanded access to alerts.}
+
+\subsection{Cloud Deployment}
+
+As outlined in the  recent Astro2020 APC White Paper ``Astronomy should be in the clouds'' \cite{Smith:2019gqn}, commodity cloud computing, as provided by commercial vendors such as Amazon, Google, and Microsoft, has the potential to fundamentally change the way data from astronomical large astronomical surveys such as LSST, WFIRST, etc, is processed and served to a global community. 
+
+Commercial clouds provide the potential for on-demand, easily scalable analysis workflows for datasets of LSST scale and beyond.  
+Science users could directly provision the resources required for their analysis task and take advantage of the high bandwidth within cloud regions to access the entire LSST alert stream.  
+Additionally, cutting-edge industrial tools provide increasingly accessible means of processing petascale datasets;
+commercial cloud databases like BigQuery could provide performant hosting of a PPDB clone, for instance.
+However, issues of cost, training, and accessibility remain to be explored.
+
+\nrec{ppdbincloud}
+{Investigate the possibility of hosting the alert stream and/or PPDB in the cloud}
+{Investigate the possibility of providing a cloud-hosted version of the alert stream and/or PPDB that is publicly accessible, including understanding what latency would be acceptable and how  this interacts with other LSST requirements.}

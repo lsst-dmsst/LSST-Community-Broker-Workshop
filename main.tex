@@ -1,0 +1,107 @@
+%\documentclass[twocolumn]{aastex62}
+%\documentclass[onecolumn]{aastex62}
+\documentclass[modern]{aastex62}
+
+\shorttitle{LSST Community Brokers}
+\shortauthors{Guy, Bellm, Graham}
+
+%\usepackage{xcolor}
+%\usepackage[USenglish]{babel}
+%\usepackage[utf8]{inputenc}
+%\usepackage[T1]{fontenc}
+%\usepackage{comment}
+\usepackage{glossaries}  
+%\usepackage{enumitem}
+\usepackage{collect}
+%\usepackage{wrapfig}
+%\usepackage{graphicx}
+%\usepackage{hyperref}
+%\usepackage{booktabs}
+\usepackage[colorinlistoftodos]{todonotes}
+
+\graphicspath{{./}{./figures/}}
+
+% Environment for recommendations
+\providecommand{\secref}[1]{\hyperref[#1]{Section~\ref{#1}}}
+\providecommand{\appref}[1]{Appendix~\ref{#1}}
+\providecommand{\tabref}[1]{Table~\ref{#1}}
+\providecommand{\figref}[1]{Figure~\ref{#1}}
+\providecommand{\eqnref}[1]{Eq.~\ref{#1}}
+\providecommand{\recref}[1]{\hyperref[#1]{REC-\ref{#1}}}
+
+%Counter for recommendations
+\newcounter{reccount} 
+\newenvironment{recenv}[1]
+    { % empty more or less but we need it so we can refer to it.
+    \refstepcounter{reccount}  %increment the counter for each recomendation
+    #1
+    }
+
+% Recommendations collection
+\definecollection{nrecommendations}
+%chapter, audience, term, 
+%label (rec:label for references), title, full text
+\newcommand{\nrec}[3]{ 
+	\begin{recenv}
+	\vspace{5pt}
+	\noindent \textbf{REC-\thereccount~#2}.     
+	%\textbf{Area:} #1.  \textbf{Audience:} #2. \textbf {Term:} #3
+	\newline \label{rec:#1}\noindent \textit{#3}
+	\vspace{5pt}
+	\end{recenv}
+    % collecting  for output :
+    \begin{collect}{nrecommendations}{}{}
+        \noindent \textbf{REC-\ref{rec:#1}~#2}.
+	%\newline \textbf{Area:} #1.  \textbf{Audience:} #2. \textbf {Term:} #3
+        \newline \textit{#3}.
+        \newline See page \pageref{rec:#1}. \vspace{10pt}
+     \end{collect}
+\typeout{REC-\thereccount: #1: #2: #3 :END}
+}
+
+% Use these macros for commenting
+\newcommand{\ECB}[2][]{\todo[color=blue!30, #1]{EB: #2}}
+\newcommand{\MLG}[2][]{\todo[color=red!30, #1]{MLG: #2}}
+\newcommand{\LPG}[2][]{\todo[color=cyan!30, #1]{LPG: #2}}
+
+% Glossary -- generated locally  with generateacronyms.py from lsst-texmf
+\input{aglossary.tex}
+\makenoidxglossaries
+
+\begin{document}
+
+\title{Transient Alert Brokers in the LSST Era.}
+\input{authors}
+\input{abstract}
+\keywords{LSST, Astronomy, Astrophysics, Algorithms, Brokers, Community Brokers, Data Management, Alerts, Computing, HTC, Networking, Machine Learning, Cloud}
+
+\listoftodos
+\clearpage
+
+\input{introduction}
+\input{recommendations}
+\input{science}
+\input{alertproduction}
+\input{precursor}
+\input{eventbrokers}
+\input{algorithms}
+\input{interfaces}
+\input{archandtech}
+\input{followup}
+\input{conops}
+\input{conclusions}
+
+\input{acknowledgements}
+% \facility{LSST}
+
+\printglossaries
+%\printnoidxglossary
+
+% ----------------------------------------------------------------------
+\clearpage
+\bibliographystyle{plainnat}
+\bibliography{brokers}
+
+%\listofchanges
+
+\end{document}

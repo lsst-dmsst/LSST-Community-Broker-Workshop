@@ -1,0 +1,41 @@
+% Putting it all together in here - how do we run it all in operations
+\section{Alert ecosystem in LSST Operations (Leanne)} \label{sec:conops}
+One of the key motivators for this workshop was to develop a vision of an integrated global ecosystem for transient science in the LSST era. Here we describe the concept of operations not just for LSST alert stream but but the whole system integrated ecosystem for transient science in the LSST Era. 
+
+
+\subsection{LSST Commissioning}
+Reference relevant commissioning documents
+
+\subsection{LSST Operations}
+Reference relevant commissioning documents
+
+
+%%% Recommendations
+To address these challenges, we make the following recommendations:
+
+\nrec{teststreams}
+{Investigate the possibility of providing test streams for broker testing}
+{Investigate the possibility of the project providing test streams of alerts for brokers and downstream TOMS to enable broker development, data challenges, and operations rehearsals
+}
+
+\nrec{usercomputing}
+{Provide a more robust definition of “10\% of the LSST computational system”}
+{Provide a more robust estimate of what “10\% of the LSST computational system” means, so that the scientists and future users can begin to figure out whether that will meet their needs, and prepare grants/proposals.
+}
+
+\nrec{filteredstreams}
+{Investigate the possibility of providing filtered streams}
+{Clarify if/how the project could provide filtered streams, e.g
+Simple filters: RA/DEC, Magnitude, Spuriousness cuts?
+Image-free streams of alert packets?
+sources associated with past alerts?
+and provide estimate of how much the stream volume is reduced by these options.
+}
+
+\nrec{expandedaccessstream}
+{Investigate options for expanding access to the alert stream}
+{There is clear demand for expanding (near-) real time access to the full alert stream to ~tens of users, and a number of ways to get there:
+less information in alerts
+accepting longer latencies (5 minutes, not 60 seconds?)
+network of mirrors forwarding the stream
+cloud hosting}
