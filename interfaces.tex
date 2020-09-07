@@ -1,4 +1,3 @@
-%%% MLG simplified the title from "User Facing Interfaces"
 \section{User Interfaces (Melissa, Gregory)} \label{sec:interfaces}
 % Resources used:
 % https://community.lsst.org/t/lsst-answers-to-community-broker-faqs/3780
@@ -24,34 +23,34 @@ The contents of this section were generated from invited presentations and discu
 More information about VOEvents, the IVOA (International Virtual Observatory Alliance), and VTP (VOEvent Transport Protocol) can be found in \citet{2011ivoa.spec.0711S} and \citet{2017arXiv170901264A}.
 
 
-\subsection{The LSST Science Platform}\label{ssec:interfaces_lsp}
-% {\it What will the interface between the LSP and Community Brokers look like for users? How about for the LSST Alert Filtering Service?}
+\subsection{The Rubin Science Platform}\label{ssec:interfaces_rsp}
+% {\it What will the interface between the RSP and Community Brokers look like for users? How about for the LSST Alert Filtering Service?}
 
-The LSST Science Platform (LSP) is a collaborative research environment that provides access to LSST data products and services for all science users and project staff.
-The LSP provides a set of integrated web applications and computational resources deployed at LSST Data Access Centers (DACs).
-The LSP is composed of three main aspects, each of which could be considered a "user interface":
+The Rubin Science Platform (RSP) is a collaborative research environment that provides access to LSST data products and services for all science users and project staff.
+The RSP provides a set of integrated web applications and computational resources deployed at LSST Data Access Centers (DACs).
+The RSP is composed of three main aspects, each of which could be considered a "user interface":
 (1) Portal, for exploratory search, analysis, and visualization of the LSST archive;
 (2) Notebook, for in-depth next-to-the-data analysis with pre-installed and custom libraries that enable the creation of added-value user-generated data products, without the need for users to download large volumes of data; and
 (3) Web API, enabling remote access to the LSST datasets and services using community-accepted formats and protocols\footnote{A ``VO First" strategy has been adopted, which means that IVOA protocols will be used wherever possible}.
-More information about the LSP design can be found in \citet{LSE-319,LDM-542}.
+More information about the RSP design can be found in \citet{LSE-319,LDM-542}.
 
-Below is described alerts-related interfaces with the LSP, from the perspective of individual users (\S~\ref{sssec:interfaces_lsp_individual}) and community brokers (\S~\ref{sssec:interfaces_lsp_brokers}).
+Below is described alerts-related interfaces with the RSP, from the perspective of individual users (\S~\ref{sssec:interfaces_rsp_individual}) and community brokers (\S~\ref{sssec:interfaces_rsp_brokers}).
 
-\subsubsection{Individual Users' Interfaces to the LSP}\label{sssec:interfaces_lsp_individual}
+\subsubsection{Individual Users' Interfaces to the RSP}\label{sssec:interfaces_rsp_individual}
 
 Most scientists will access LSST alerts via community brokers.
-Although it will be possible for users to ingest a set of broker-filtered alerts to their user account in the LSST Science Platform (LSP) -- and note that this would be subject to the same data storage limits as any other uploaded data set -- a more efficient use of the LSP would be to directly access the original prompt data products from which the alert packets are derived (i.e., the images and catalogs described in Section 3 of \citealt{LSE-163}).
+Although it will be possible for users to ingest a set of broker-filtered alerts to their user account in the LSST Science Platform (RSP) -- and note that this would be subject to the same data storage limits as any other uploaded data set -- a more efficient use of the RSP would be to directly access the original prompt data products from which the alert packets are derived (i.e., the images and catalogs described in Section 3 of \citealt{LSE-163}).
 The contents of the alerts and the PPDB are essentially identical, with the main difference being timescale: alerts are released within $60$ seconds of image readout, whereas the prompt products are available within $24$ hours.
 
 Some scientists might instead use the LSST Alert Filtering Service, which will provide basic, limited capacity access to the LSST alert stream, and is sized to allow 100 simultaneous user-generated filters to return 20 alerts per visit (Section 2.2.4, \citealt{LSE-61}).
 The LSST Alert Filtering Service is still in development, but is expected to provide VOEvent format alerts (or similar; Section 3.5.2 of \citealt{LSE-163}).
 
-It is expected that users of the LSST Science Platform (LSP) will be able to define an alert stream filter in the LSP environment and have it installed in the LSST Alert Filtering Service, which is separate from the LSP\footenote{LSP facilities are for analysis and queries of the LSST data products and not for continuously-running processes such as alert stream filters.}.
+It is expected that users of the LSST Science Platform (RSP) will be able to define an alert stream filter in the RSP environment and have it installed in the LSST Alert Filtering Service, which is separate from the RSP\footenote{RSP facilities are for analysis and queries of the LSST data products and not for continuously-running processes such as alert stream filters.}.
 
-Users may receive their filtered alerts from the LSST Alert Filtering Service by, e.g., a simple User Interface provided in the LSP via the Portal Aspect (Section 3.9 of \citealt{LDM-542}; Section 2.9.5 of \citealt{LDM-554}), and/or a direct connection using standard IVOA protocols to a third-party system (e.g., VTP to a private server).
-It is important to note that although it should be possible to query the Alerts Database from the LSP \citep{LDM-542}, the Alerts Database might only support queries by alert ID. 
+Users may receive their filtered alerts from the LSST Alert Filtering Service by, e.g., a simple User Interface provided in the RSP via the Portal Aspect (Section 3.9 of \citealt{LDM-542}; Section 2.9.5 of \citealt{LDM-554}), and/or a direct connection using standard IVOA protocols to a third-party system (e.g., VTP to a private server).
+It is important to note that although it should be possible to query the Alerts Database from the RSP \citep{LDM-542}, the Alerts Database might only support queries by alert ID. 
 
-\subsubsection{Community Brokers' Interfaces to the LSP}\label{sssec:interfaces_lsp_brokers}
+\subsubsection{Community Brokers' Interfaces to the RSP}\label{sssec:interfaces_rsp_brokers}
 
 External entities (e.g., brokers) may interface with the PPDB via the Web API aspect of the LSST Science Platform, and use the TAP interface\footnote{More information about TAP can be found at: \url{http://www.ivoa.net/documents/TAP/} and \url{https://www.cadc-ccda.hia-iha.nrc-cnrc.gc.ca/en/doc/tap/}.} to query the PPDB catalogs by, e.g., using {\tt DIAObject} or {\tt DIASource} IDs from the alert packet as keys (\citealt{LSE-319,LDM-542,LDM-554}).
 The PPDB catalogs are updated with new data within {\tt L1PublicT} of image acquisition (currently 24h; \citealt{LSE-29}). 
