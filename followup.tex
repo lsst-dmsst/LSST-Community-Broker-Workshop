@@ -1,49 +1,57 @@
-\section{Followup Tools and Services (Melissa)} \label{sec:followup}
+\section{Follow-up Tools and Services (Melissa)} \label{sec:followup}
 % Materials used
 %LSST CBW Participants Drive > Presentations - Friday Morning
 %SOAR_AEON_Presentation_June2019.pdf
 %LCO LSST Broker LONI Presentation
 
-\MLG[inline]{Section status: MLG preliminary text generation in progress. Should invite Cesar and Rachel and Austin to contribute here.}
+% Ensure this section contains:
+%  - How will automated follow-up be enabled?
+%  - How will brokers and science platforms integrate and coordinate with follow-up observing facilities and networks?
 
-\smallskip
+\MLG[inline]{"Follow-up Tools and Services" section draft contains all the contributions I can give to it, and is ready for input from others.}
+% Should invite Cesar and Rachel and Austin to contribute here.
 
-\noindent
-{\it Ensure this section contains:
-\begin{itemize}
-    \item How will automated follow-up be enabled?
-    \item How will brokers and science platforms integrate and coordinate with
-follow-up observing facilities and networks?
-\end{itemize}
-}
+Time-domain science with LSST will benefit significantly from additional observations enabled by \emph{follow-up} facilities and services, and some science goals absolutely require follow-up data.
+Enabling rapid follow-up observations is one of the main science-driven needs for community brokers, as described in Section \ref{sec:science}.
+This section describes efforts underway to enable automated, real-time integration of the LSST alert stream with follow-up networks and target observation managers (TOMs).
+The contents of this section were generated from invited and contribution presentations, and Unconference discussion sessions, at the workshop\footnote{With thanks to César Briceño and Austin Riba.}.
 
-Time-domain science with LSST will benefit significantly from additional observations enabled by \emph{follow-up} facilities and services, and some science goals absolutely require follow-up data. Enabling rapid follow-up observations is one of the main science-driven needs for community brokers, as described in Section \ref{sec:science}. In these sessions we explored how to enable automated, real-time integration of the LSST alert stream with follow-up networks and target observation managers (TOMs).
+\subsection{Follow-up Networks}\label{ssec:followup_networks}
 
-\subsection{Follow-up Networks}
+In time-domain astronomy, a full physical understanding of a given event often requires the acquisition of multi-wavelength data at faint and bright phases (i.e., at early/late times and near the light curve's peak).
+Multiple observatories, with a range of apertures and instrumentation, are often involved, and large collaborations of astronomers contributing resources to a shared goal has become more common.
+Several examples of current transient surveys and their follow-up networks were discussed in \S~\ref{sec:precursor}.
+In many such collaborations it is the people who form the nodes of the network: people running the discovery survey, people assigning potential targets for follow-up and contacting the people with access to the appropriate facilities, and people acquiring the desired observations.
+This kind of human network is already stressed by the volume of ZTF alerts, and this mode will be unsustainable in the LSST era (especially for science cases that require large sample sizes).
+For this reason, efforts are underway to centralize and automate the path from discovery to follow-up with multiple observatories.
+For example, the Las Cumbres Observatory is essentially a self-contained follow-up network, coordinating its distributed worldwide facilities to optically monitor transients and variables.
 
-Astronomical Event Observing Network\footnote{\url{https://lco.global/aeon/}} (AEON) is the software architecture that allows for the automatic queue scheduling of requested follow-up observations, and is currently in development between the Las Cumbres Observatory and SOAR Telescope. With AEON, accepted proposals may submit their observation requests via API, thereby allowing the auto-generation of follow-up observations by, e.g., TOMs, for targets which meet certain pre-defined criteria. For example, three consecutive epochs of multi-band photometry show a faint but rapidly rising blue transient associated with a low-$z$ host galaxy. A request for a low-resolution spectrum could be automatically generated with, e.g., a 2-day window and intermediate priority, and submitted to the SOAR scheduler. In this process, AEON is the software that enables the TOM to communicate directly with the SOAR queue. 
+Towards the goal of networks which can interface with multiple follow-up facilities, the Astronomical Event Observing Network\footnote{\url{https://lco.global/aeon/}} (AEON) is a software architecture that allows for the automatic queue scheduling of requested follow-up observations, and is currently in early operations with the SOAR Telescope\footnote{\url{http://www.ctio.noao.edu/soar/content/soar-aeon-home-page}}.
+With AEON, individuals with accepted SOAR proposals may submit their observation requests via an API, which can be embedded in a broker or TOM (user interfaces are described in \S~\ref{sec:interfaces}).
+AEON also enables the auto-generation of follow-up observations by, e.g., TOMs, for targets which meet certain pre-defined criteria.
+In this scenario, an individual could define a broker filter that identifies targets with three consecutive epochs of multi-band photometry that show a faint but rapidly rising blue transient associated with a low-$z$ host galaxy.
+An AEON queue observation request for a low-resolution spectrum could be automatically generated with, e.g., a 2-day window and intermediate priority, and submitted to the SOAR scheduler.
+In this process, AEON is the software that enables the TOM to communicate directly with the SOAR queue.
 
-\MLG[inline]{from here we could get more detailed on how AEON works -- Cesar's talk has many details -- but I'll leave that for later.}
+{\bf Challenges faced by follow-up networks} include minimizing overheads (e.g., idle time, network delays, observations that run over their scheduled time window), ensuring the necessary instrument and telescope constraints can be specified in the TOM, adding support for moving objects, and the automatic reduction and resubmission of processed follow-up data from the telescopes back to the TOMs. 
 
-Some of the main challenges faced by such follow-up networks are minimizing overheads (e.g., idle time, network delays, observations that run over their scheduled time window), ensuring the necessary instrument and telescope constraints can be specified in the TOM, support for moving objects, and the automatic reduction and resubmission of processed follow-up data from the telescopes back to the TOMs. 
+\subsection{TOMs}\label{sec:followup_toms}
+% Ensure this section contains:
+% - Will TOMs be run as a service that brokers can connect to?
+% - Will brokers integrate TOMS into their platform astropy style?
 
-\subsection{TOMs}
+In the LSST era, sample sizes for transients and variable stars will increase by at least an order of magnitude for even the rarest sub-groups, as will the diversity in classification types -- all of which will have different science-driven needs for follow-up observations and analysis.
+Target Observation Managers (TOMs) are currently being developed to meet these challenges.
+TOMs could be considered as a specialized sort of science platform that is driven by time-domain science and follow-up observations: software to coordinate observing programs and keep track of target samples, observations, and derived data products. 
 
-\smallskip
-\noindent
-{\it Ensure this section contains:
-\begin{itemize}
-    \item Will TOMs be run as a service that brokers can connect to?
-    \item Will brokers integrate TOMS into their platform astropy style?
-\end{itemize}
-}
+The Las Cumbres Observatory's TOM Toolkit \citep{2018SPIE10707E..11S} provides an open-source modular software package that enables astronomers to build TOM systems and customize them for a given science goals.
+These software packages provide core functions for common tasks and well-defined interfaces to allow the TOM to communicate with, e.g., brokers and follow-up networks (\S~\ref{sec:interfaces}).
+By making this open-source, the hope is that a community of TOM users will arise and support each other in the further development and use of TOM systems. 
 
-In the LSST era, sample sizes for transients and variable stars will increase by at least an order of magnitude for even the rarest sub-groups, and likely much more, as will the diversity in classification types -- all of which will have different science-driven needs for follow-up observations and analysis. Target Observation Managers (TOMs) are currently being developed to meet this challenge. TOMs could be considered as a specialized sort of science platform that is driven by time-domain science and follow-up observations: software to coordinate observing programs and keep track of target samples, observations, and derived data products. 
+The previous section discussed an example of a identifying a faint but rapidly rising blue transient in need of follow-up.
+In this scenario, the TOMs role might be ingesting the associated alerts from the broker, performing additional tasks to add information to the target (e.g., cross-matches with external catalogs, light-curve feature fits, adding tags or labels, assigning to science-based samples), evaluating a target's need for science-driven follow-up, auto-generating follow-up observation requests, and submitting them to follow-up networks.
+A TOM system might also ingest the follow-up data (e.g., spectra) and perform analysis (e.g., spectral typing) which then further informs the need for additional follow-up.
 
-The Las Cumbres Observatory's TOM Toolkit aims to provide an open-source modular software package that enables astronomers to build TOM systems and customize them for a given science goals. These software packages provide core functions for common tasks and well-defined interfaces to allow the TOM to communicate with, e.g., brokers and follow-up networks. By making this open-source, the hope is that a community of TOM users will arise and support each other in the further development and use of TOM systems. 
+{\bf Challenges faced by TOM systems} includes ... 
 
-In the example above of a faint but rapidly rising blue transient, the TOMs role might be ingesting the associated alerts from the broker, performing additional tasks to add information to the target (e.g., cross-matches with external catalogs, light-curve feature fits, adding tags or labels, assigning to science-based samples), evaluating a target's need for science-driven follow-up, auto-generating follow-up observation requests and submitting them to follow-up networks, and ingesting the follow-up data (e.g., spectra) and performing analysis (e.g., spectral typing) which then further informs the need for science-driven follow-up.
-
-\MLG[inline]{Some of the main challenges faced by TOMs are ... (MLG is unsure, the LCO TOM Toolkit talk didn't have a list like the AEON talk did... but surely they could contribute here).}
-
-To  address these challenges, we make the following recommendations: 
+\MLG[inline]{Re. 10.2 "TOMs" would Austin and Rachel like to provide a list of challenges faced?}

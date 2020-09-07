@@ -42,8 +42,12 @@ One possibility would be to favor selection of brokers who are willing to forwar
 An alternative would be to investigate ways for LSST to supply alerts directly to a larger number of community brokers.
 This might be accomplished by allocating more outbound bandwidth from the LSST Data Facility, providing pre-filtered streams or ``light'' alerts with reduced contents, setting up simple alert forwarding systems in other locations, increasing alert transmission latency, and/or providing copies of the alert stream or PPDB in the cloud.
 
-Having some brokers co-located with the LSST Data Facility at NCSA would also ease outbound bandwidth constraints.
-At present agreements to co-locate would be developed by the broker teams and NCSA directly, without LSST Project involvement.
+Having some brokers co-located at  the LSST Data Facility would also ease outbound bandwidth constraints.
+
+\LPG[inline]{I'm not sure it would ease the outbound bandwidth as there would be several downstream brokers who would pull a filtered stream and  a large number of users connecting to the broker at the LDF and pulling filtered streams. It is not clear whether it would reduce or increase the outbound bandwidth, It would change the access patterns. }
+
+At present agreements to co-locate would be developed by the broker teams and the LDF directly, without LSST Project involvement.
+
 
 \nrec{expandstreams}
 {Investigate possibilities for expanding alert stream access}

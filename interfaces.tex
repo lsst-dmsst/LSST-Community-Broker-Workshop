@@ -1,99 +1,129 @@
-% Identified needs and connect them to science 
-% To enab;e X science - need Y science 
-\section{User Facing Interfaces (Melissa, Gregory)}  \label{sec:interfaces}
+%%% MLG simplified the title from "User Facing Interfaces"
+\section{User Interfaces (Melissa, Gregory)} \label{sec:interfaces}
 % Resources used:
 % https://community.lsst.org/t/lsst-answers-to-community-broker-faqs/3780
 % LSST CBW Participants Drive > Presentations - Wednesday Morning > Bellm_AP_overview_190619.pdf
+% The SOC's google doc full of notes from the CBW
 
+% Make sure the contents address the following:
+% How will the scientific community interact with community brokers and access the LSST data products? 
+% How will community brokers interface to science platforms, data archives 
+% How can pipelines for User-Generated data processing and analysis interface with the LSST alert stream
+% Identified needs and connect them to science, i.e., to enable X science - need Y science.
 
-\smallskip
-\noindent
-\MLG{\it Could the title be just "User Interfaces"?}
+\MLG[inline] {"User Interfaces" section draft contains all of my contributions and is ready for input from others.}
 
-\smallskip
-\noindent
-
-\MLG[inline]{\it Section status:\\ so far I've just worked in relevant content from the FAQ document; incorporating workshop materials like talk slides and notes comes next.
-}
-
-\smallskip
-\noindent
-{\it Summarize science-driven user interfaces once Section 2 is done. Summarize the general types of proposed interfaces from the LOI once Section 5 is done.}
-
-\smallskip
-\noindent
-{\it Make sure the contents address the following:
-\begin{itemize}
-    \item How will the scientific community interact with community brokers and access the LSST data products? 
-    \item How will community brokers interface to science platforms, data archives 
-    \item How can ipelines for User-Generated data processing and analysis interface with the LSST alert stream
-\end{itemize}
-}
-
-\smallskip
-
-Users will not be able to subscribe to full, unfiltered alert streams coming directly from LSST. Instead, it is expected that most scientists will access LSST alerts via community brokers. Each community broker defines its own user interfaces through which individuals can access the broker's alert stream filters, value-added data products, queryable database, etc. This access might be via, e.g., web browsers or desktop clients.
-
-{\bf (Discuss here some of the current brokers' user interfaces.)}
-
+This section discusses user interfaces that enable science by providing access to the LSST data products, user- or broker-generated data products, and external (archival) data.
+This includes brokers as users of the alert stream, individuals as users of the brokers, and both brokers and individuals using the LSST science platform or other data archives.
+The contents of this section were generated from invited presentations and discussion sessions at the workshop\footnote{Thanks to Knut Olsen, César Briceño, Stéfan van der Walt, Austin Riba, and the broker proposal teams for their talks relating to science platforms and interface development.}.
 
 \subsection{IVOA}\label{ssec:interfaces_ivoa}
-{\it What interfaces do we have with the IVOA? VO Event format?}
 
-\smallskip
+\MLG[inline] {"IVOA" subsection of "User Interfaces" needs contributions from someone who knows the content.}
 
 More information about VOEvents, the IVOA (International Virtual Observatory Alliance), and VTP (VOEvent Transport Protocol) can be found in \citet{2011ivoa.spec.0711S} and \citet{2017arXiv170901264A}.
 
 
 \subsection{The LSST Science Platform}\label{ssec:interfaces_lsp}
-{\it What will the interface between the LSP and Community Brokers look like for users? How about for the LSST Alert Filtering Service?}
+% {\it What will the interface between the LSP and Community Brokers look like for users? How about for the LSST Alert Filtering Service?}
 
-\smallskip
+The LSST Science Platform (LSP) is a collaborative research environment that provides access to LSST data products and services for all science users and project staff.
+The LSP provides a set of integrated web applications and computational resources deployed at LSST Data Access Centers (DACs).
+The LSP is composed of three main aspects, each of which could be considered a "user interface":
+(1) Portal, for exploratory search, analysis, and visualization of the LSST archive;
+(2) Notebook, for in-depth next-to-the-data analysis with pre-installed and custom libraries that enable the creation of added-value user-generated data products, without the need for users to download large volumes of data; and
+(3) Web API, enabling remote access to the LSST datasets and services using community-accepted formats and protocols\footnote{A ``VO First" strategy has been adopted, which means that IVOA protocols will be used wherever possible}.
+More information about the LSP design can be found in \citet{LSE-319,LDM-542}.
 
-The LSST Science Platform (LSP) is a collaborative research environment that provides access to LSST data products, and services for all science users and project staff. The LSP provides a set of integrated web applications and computational resources deployed at LSST Data Access Centers (DACs). The LSP is composed of three main aspects: (1) Portal, for exploratory search, analysis, and visualization of the LSST archive; (2) Notebook, for in-depth next-to-the-data analysis with pre-installed and custom libraries that enable the creation of added-value user-generated data products, without the need for users to download large volumes of data; and (3) Web API, enabling remote access to the LSST datasets and services using community-accepted formats and protocols\footnote{A ``VO First" strategy has been adopted, which means that IVOA protocols will be used wherever possible}. More information about the LSP design can be found in \citet{LSE-319,LDM-542}.
+Below is described alerts-related interfaces with the LSP, from the perspective of individual users (\S~\ref{sssec:interfaces_lsp_individual}) and community brokers (\S~\ref{sssec:interfaces_lsp_brokers}).
 
-Here we describe alerts-related user interfaces with the LSP, from the perspective of individual users (\S~\ref{sssec:interfaces_lsp_individual}) and community brokers (\S~\ref{sssec:interfaces_lsp_brokers}).
+\subsubsection{Individual Users' Interfaces to the LSP}\label{sssec:interfaces_lsp_individual}
 
-\subsubsection{For Individual Users}\label{sssec:interfaces_lsp_individual}
+Most scientists will access LSST alerts via community brokers.
+Although it will be possible for users to ingest a set of broker-filtered alerts to their user account in the LSST Science Platform (LSP) -- and note that this would be subject to the same data storage limits as any other uploaded data set -- a more efficient use of the LSP would be to directly access the original prompt data products from which the alert packets are derived (i.e., the images and catalogs described in Section 3 of \citealt{LSE-163}).
+The contents of the alerts and the PPDB are essentially identical, with the main difference being timescale: alerts are released within $60$ seconds of image readout, whereas the prompt products are available within $24$ hours.
 
-As previously mentioned, it is expected that most scientists will access LSST alerts via community brokers. Although it will be possible for users to ingest a set of broker-filtered alerts to their user account in the LSST Science Platform (LSP) -- and note that this would be subject to the same data storage limits as any other uploaded data set -- we want to emphasize that a more efficient use of the LSP would be to directly access the original Prompt data products from which the alert packets are derived (i.e., the images and catalogs described in Section 3 of \citealt{LSE-163}). The contents of the Alerts and the Prompt products database are essentially identical, with the main difference being timescale: Alerts are released within $60$ seconds of image readout, whereas the Prompt products are available within $24$ hours.
+Some scientists might instead use the LSST Alert Filtering Service, which will provide basic, limited capacity access to the LSST alert stream, and is sized to allow 100 simultaneous user-generated filters to return 20 alerts per visit (Section 2.2.4, \citealt{LSE-61}).
+The LSST Alert Filtering Service is still in development, but is expected to provide VOEvent format alerts (or similar; Section 3.5.2 of \citealt{LSE-163}).
 
-The LSST Alert Filtering Service will provide basic, limited capacity access to the LSST alert stream; it is sized to allow 100 simultaneous user-generated filters to return 20 alerts per visit (Section 2.2.4, \citealt{LSE-61}). The LSST Alert Filtering Service is expected to provide VOEvent format alerts (or similar; Section 3.5.2 of \citealt{LSE-163}). {\bf (Re. last two sentences, could instead cite section of this paper that describes LAFS.)} It is expected that users of the LSST Science Platform (LSP) will be able to define an alert stream filter in the LSP environment and have it installed in the LSST Alert Filtering Service, which is separate from the LSP. (LSP facilities are for analysis and queries of the LSST data products and not for continuously-running processes such as alert stream filters.)  Users may receive their filtered alerts from the LSST Alert Filtering Service by, e.g., a simple User Interface provided in the LSP via the Portal Aspect (Section 3.9 of \citealt{LDM-542}; Section 2.9.5 of \citealt{LDM-554}), and/or a direct connection using standard IVOA protocols to a third-party system (e.g., VTP to a private server). It is important to note that although it should be possible to query the Alerts Database from the LSP \citep{LDM-542}, the Alerts Database might only support queries by alert ID. 
+It is expected that users of the LSST Science Platform (LSP) will be able to define an alert stream filter in the LSP environment and have it installed in the LSST Alert Filtering Service, which is separate from the LSP\footenote{LSP facilities are for analysis and queries of the LSST data products and not for continuously-running processes such as alert stream filters.}.
 
-\subsubsection{For Community Brokers}\label{sssec:interfaces_lsp_brokers}
+Users may receive their filtered alerts from the LSST Alert Filtering Service by, e.g., a simple User Interface provided in the LSP via the Portal Aspect (Section 3.9 of \citealt{LDM-542}; Section 2.9.5 of \citealt{LDM-554}), and/or a direct connection using standard IVOA protocols to a third-party system (e.g., VTP to a private server).
+It is important to note that although it should be possible to query the Alerts Database from the LSP \citep{LDM-542}, the Alerts Database might only support queries by alert ID. 
 
-External entities (e.g., brokers) may interface with the PPDB via the Web API aspect of the LSST Science Platform, and use the TAP interface\footnote{More information about TAP can be found at:
-\url{http://www.ivoa.net/documents/TAP/} and \url{https://www.cadc-ccda.hia-iha.nrc-cnrc.gc.ca/en/doc/tap/}.} to query the PPDB catalogs by, e.g., using {\tt DIAObject} or {\tt DIASource} IDs from the alert packet as keys (\citealt{LSE-319,LDM-542,LDM-554}). The PPDB catalogs are updated with new data within {\tt L1PublicT} of image acquisition (currently 24h; \citealt{LSE-29}). 
+\subsubsection{Community Brokers' Interfaces to the LSP}\label{sssec:interfaces_lsp_brokers}
 
+External entities (e.g., brokers) may interface with the PPDB via the Web API aspect of the LSST Science Platform, and use the TAP interface\footnote{More information about TAP can be found at: \url{http://www.ivoa.net/documents/TAP/} and \url{https://www.cadc-ccda.hia-iha.nrc-cnrc.gc.ca/en/doc/tap/}.} to query the PPDB catalogs by, e.g., using {\tt DIAObject} or {\tt DIASource} IDs from the alert packet as keys (\citealt{LSE-319,LDM-542,LDM-554}).
+The PPDB catalogs are updated with new data within {\tt L1PublicT} of image acquisition (currently 24h; \citealt{LSE-29}). 
 
 
 \subsection{External Science Platforms and Archives}\label{ssec:interfaces_other}
-{\it Integration with other science archives or platforms, e.g Datalab, Canadian LSST Advanced Science Platform, others. Interfaces to data archives such as the CADC, etc.}
-
 % Materials used
 % LSST CBW Participants Drive > Presentations - Thursday Afternoon > Stefan van der Walt - SkyPortal
 % LSST CBW Participants Drive > Presentations - Thursday Afternoon > DataLab_CBW.pptx
+%{\it Integration with other science archives or platforms, e.g Datalab, Canadian LSST Advanced Science Platform, others. Interfaces to data archives such as the CADC, etc.}
 
+As astronomical data sets grow in size and complexity, it becomes increasingly necessary to co-locate the data with the tools and compute resources for scientific analysis.
+The user interfaces for these systems, the science platforms, will play critical roles in the analysis of new and archival data sets, enabling science and expanding discovery space for a broad cross-section of the community \citep[e.g.,][]{2019arXiv190305130O}.
+The LSST Science Platform is just one example of an astronomical science platform serving as a user interface to a data archive or an alert stream, and some community brokers and TOMs could be considered science platforms.
+It is expected that non-LSST science platforms may want to offer users the opportunity to access the LSST alerts or other LSST data products via, e.g., Web API, without that platform having to ingest the LSST data into its database.
 
-As astronomical data sets grow in size and complexity, it becomes increasingly necessary to co-locate the data with the tools and compute resources for scientific analysis. Thus, science platforms will play critical roles in the analysis of new and archival data sets, enabling science and expanding discovery space for a broad cross-section of the community \citep[e.g.,][]{2019arXiv190305130O}. The LSST Science Platform is just one example of an astronomical science platform serving as a user interface to a data archive or an alert stream, and some community brokers and TOMs could be considered science platforms themselves. It is expected that other external science platforms may want to offer users the opportunity to access the LSST alerts and/or other LSST data products (not necessarily by having every platform ingest the LSST data, but e.g., by web APIs). In general, it is common for Science Platforms's user interfaces to be a browser-based web front-end built on a web API (such as we have mentioned here), but alternative clients might be developed {\bf (are there examples of non-browser web clients for science platforms?)}. 
+In general, it is common for science platforms's user interfaces to be a browser-based web front-end built on a web API, and desirable that interfaces be modular and customizable to the user -- or a user groups' -- science needs.
+The TOM Toolkit (discussed in \S~\ref{sec:followup}) is one example of a customizable user interface.
+SkyPortal\footnote{\url{https://skyportal.io}} \citep{skyportal2019}, designed as a platform for time-domain survey data from ZTF and eventually LSST, allows users to customize how the data for a given object is rendered.
+For example, interactive plots of light-curves and postage stamp images from an alert packet can appear alongside user-supplied spectra and/or comments.
 
-One of the key concepts discussed at the CBW is for user interfaces to be modular and customizable to the user -- or a user groups' -- particular science needs. The TOM Toolkit ({\bf cite the section of this paper where TOM Toolkit is discussed}) is a great example of customizable user interfaces. SkyPortal\footnote{\url{https://skyportal.io}} \citep{skyportal2019} is also designed as a platform for time-domain survey data from ZTF and eventually LSST, allows users to customize how the data for a given object is rendered. For example, interactive plots of light-curves and postage stamp images from an alert packet can appear alongside user-supplied spectra and/or comments.
+The NOAO Data Lab \citep{2019arXiv190800664O} has built its user interfaces on the guiding principle of enabling efficient exploration through which users can develop intuition through interaction with catalogs, images, and spectra, and have this lead to discovery.
+Embedded data visualization tools play a big role in this, and they are offered to users via, e.g., pre-installed libraries that can be called from Jupyter Notebooks.
+The Data Lab currently hosts public datasets from massive ground-based surveys in the NOAO Archive, and also provides a platform for ANTARES filter development and testing, and for the analysis of ZTF alerts that pass filters installed in ANTARES (also via browser-based notebooks). 
 
-The NOAO Data Lab \citep{2019arXiv190800664O} has built its user interfaces on the guiding principle of enabling efficient exploration through which users can develop intuition through interaction with catalogs, images, and spectra, and have this lead to discovery. Embedded data visualization tools play a big role in this, and they are offered to users via, e.g., pre-installed libraries that can be called from Jupyter Notebooks. The Data Lab currently hosts public datasets from massive ground-based surveys in the NOAO Archive, and also provides a platform for ANTARES filter development and testing, and for the analysis of ZTF alerts that pass filters installed in ANTARES. {\bf (Add more detail about HOW this works, exactly?)}
+The Canadian Astronomy Data Center\footnote{\url{http://www.cadc-ccda.hia-iha.nrc-cnrc.gc.ca/en/}} (CADC) offers specialized astronomy and data management expertise to the worldwide community, to support data access to and analysis of very large astronomical data sets (many, but not all, of which are from Canadian facilities).
+The CADC's web browser interface allows users to search its archival collection by spatial, temporal, spectral, observational constrains (e.g., proposal keywords, instrumental filter), or calibration level (e.g., raw, calibrated, or products like stacks).
+Authorized users can also create virtual machines (VMs) and submit batch processing jobs and share the results.
+The CADC is exploring ways to partner with a broker, ingest alerts (potentially subsets of alerts, and/or with greater latency), serve them to the community, and enable user activities that add value to the alerts via co-analysis with the CADC's other archival resources.
 
-The Canadian Astronomy Data Center\footnote{\url{http://www.cadc-ccda.hia-iha.nrc-cnrc.gc.ca/en/}} (CADC) offers specialized astronomy and data management expertise to the worldwide community, to support data access to and analysis of very large astronomical data sets (many, but not all, of which are from Canadian facilities). The CADC's web browser interface allows users to search its archival collection by spatial, temporal, spectral, observational constrains (e.g., proposal keywords, instrumental filter), or calibration level (e.g., raw, calibrated, or products like stacks). Authorized users can also create virtual machines (VMs) and submit batch processing jobs and share the results {\bf (unsure whether browser based?)}. The CADC is exploring ways to partner with a broker, ingest alerts (potentially subsets of alerts, and/or with greater latency), serve them to the community, and enable user activities that add value to the alerts via co-analysis with the CADC's other archival resources. 
+Common themes regarding science platform (and broker/TOM) development which enhance the user experience emerged during the presentations and discussion sessions at the workshop, and they include:
+\begin{itemize}
+\item {\it Open Development} -- to encourage collaboration in the community and ensure that the tools developed are widely applicable
+\item {\it Open Source} -- to reduce redundancy in tool development and enable customization
+\item {\it Open Access} -- to ensure tools and data are accessible to as broad a community as possible (i.e., user accounts that are authenticated, but freely available)
+\item {\it Customizability} -- to enable broad adoption of tools, they should be adaptable to different science use-cases
+\item {\it Provenance} -- packages and tools can be restored to earlier versions for testing; tracking user contributions to tools and derived data products for attributing credit properly
+\item {\it Documentation} -- tools need to be well tested and documented for broad adoption
+\end{itemize}
 
-%%% MLG: This is probably TMI for this section.
-%Common themes regarding science platform development -- which are not necessarily limited to the development of their user interfaces -- surfaced at the CBW meeting, such as:
-%\begin{itemize}
-%\item {\bf open development} -- to encourage collaboration in the community and ensure that the tools developed are widely applicable
-%\item {\bf open source} -- to reduce redundancy in tool development and enable customization
-%\item {\bf open access} -- to ensure tools and data are accessible to as broad a community as possible; i.e., user accounts that are authenticated, but freely available
-%\item {\bf customizable} -- to enable broad adoption of tools, they should be adaptable to different science use-cases
-%\item {\bf provenance} -- mainly referring to packages and tools that can be restored to earlier versions for testing, but also tracking user contributions to tools and derived data products for attributing credit properly
-%\item {\bf documentation} -- as always, tools need to be well tested and documented for broad adoption
-%\end{itemize}
+\subsection{Brokers, TOMs, and Follow-up Resources}\label{ssec:interfaces_brokers}
 
+Each community broker defines its own user interfaces through which individuals can access a broker's products, such as alert stream filters, value-added data products, or queryable database.
+This access is typically via web browsers or desktop clients.
+Currently, at least three brokers (ANTARES, ALeRECE, and Lasair) have publicly accessible websites through which users may view lists of results from filtered streams, query the database, and visualize alert packet contents (e.g., light curves, image stamps, and any user-uploaded data such as spectra, classifications, or redshifts).
+Additionally, ANTARES has a client\footnote{\url{https://gitlab.com/noao/antares/client}} for command-line based interaction with the live alert stream, Lasair offers a set of {\sc Jupyter} notebooks\footnote{\url{https://lasair.roe.ac.uk/jupyter}} for users to work with alerts, and ALeRCE has released an API\footnote{\url{https://github.com/alercebroker/usecases/tree/master/api}} for access to their databases of alerts and postage stamps.
 
+Similarly to brokers, TOMs such as the Las Cumbres Observatory TOM Toolkit \citep{2018SPIE10707E..11S} are also deployed for browser-based access by users.
+The TOMToolkit codebase is in {\sc Python} and {\sc Django}, the latter of which has many pre-existing modules that enable a developer to easily customize their interfaces and add functionality appropriate for the TOM's science goals.
+The customized TOM can then be deployed via, e.g., {\sc Heroku}. More details about TOMs are provided in \S~\ref{sec:followup_toms}.
 
-To  address these challenges, we make the following recommendations: 
+Interfaces from brokers and TOMs to follow-up resources is one of the common science-driven needs discussed in \S~\ref{sec:science}.
+The Zwicky Transient Facility and the The Las Cumbres Observatory have been sending observation requests to their follow-up telescopes from their respective browser-based TOM systems for at least a few years (e.g., \citealt{2018SPIE10707E..11S}).
+The user interfaces for this functionality are drop-down selection boxes embedded in the website from which a user can set the observational parameters (e.g., target, instrumental configuration, time window, integration, repeat cadence), and a button to add the request to the telescope's queue.
+The interface typically also includes, e.g., airmass curves for the target of interest at the follow-up facilities, to assist the user in setting the observation request.
+An example of the software system which manages these observation requests is the Astronomical Event Observing Network\footnote{\url{https://lco.global/aeon}}, AEON, which is discussed further in \S~\ref{ssec:followup_networks}.
+
+\textcolor{red}{Get a reference, a website at least, for the following two statements or just remove them.}
+As a final example, the Gemini Observatory's API, the Observing Tool, has long been used by staff and observers to submit observing blocks to the Gemini queue, including targets of opportunity.
+A new version of the tool is under development to enable web-based user access and integration with AEON and TOM systems.
+
+\subsection{Challenges in User Interface Development}\label{ssec:interfaces_challenges}
+
+During the discussion sessions at the workshop, the following challenges in user interface development were identified:
+\begin{itemize}
+\item the authentication and authorization of user accounts
+\item preserving LSST data rights in a data-sharing environment 
+\item coordination of authenticated user accounts between platforms
+\item obtaining the computational resources required to support user activities and large data sets (e.g., query interfaces)
+\item community-wide adoption of standards to enable cross-platform interaction (e.g., querying external archives from a TOM)
+\item data visualization tools for very large data sets
+\end{itemize}
+
+% {\it To address these challenges, we make the following recommendations:}
+
