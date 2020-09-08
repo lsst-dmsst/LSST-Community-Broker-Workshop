@@ -15,10 +15,10 @@
 %\LPG[inline] {Suggest to add in a discussion of some of the scientific challenges for LSST alerts; Contrast the luxury of Catalina, which is able to optimize to one science goal to the challenges of LSST, which must accommodate a multitude of science goals}
 
 \medskip
-This section discusses the wide variety of science use-cases for the LSST alert stream and prompt data products, the sensitivity of science goals to the alert distribution timescale, the broker features needed to enable science with alerts, and the current challenges of preparing to do science with LSST alerts.
+This section discusses the wide variety of science use-cases for the  {LSST} alert stream and prompt data products, the sensitivity of science goals to the alert distribution timescale, the broker features needed to enable science with alerts, and the current challenges of preparing to do science with  {LSST} alerts.
 Each of these topics is summarized in \S~\ref{ssec:sci_sum}.
-The contents of this section are derived from invited presentations given by representatives\footnote{Thanks to V. Ashley Villar, R. Lynne Jones, Jennifer Sobeck, Rahul Biswas, Paolo Coppi, and Lauren Corlies for their talks at the workshop.} of the LSST Science Collaborations. 
-A full overview of LSST science drivers are detailed in the LSST overview paper \citep{2019ApJ...873..111I} and the LSST Science Book \citep{2009arXiv0912.0201L}. 
+The contents of this section are derived from invited presentations given by representatives\footnote{Thanks to V. Ashley Villar, R. Lynne Jones, Jennifer Sobeck, Rahul Biswas, Paolo Coppi, and Lauren Corlies for their talks at the workshop.} of the  {LSST} Science Collaborations. 
+A full overview of  {LSST} science drivers are detailed in the  {LSST} overview paper \citep{2019ApJ...873..111I} and the  {LSST} Science Book \citep{2009arXiv0912.0201L}. 
 % A presentation of science-driven options for alerts, including a wide variety of science drivers for the alert latency timescale, can be found in \citet{DMTN-alertsoptions}.
 
 \subsection{Transients and Variable Stars}\label{ssec:sci_tvs}
@@ -27,34 +27,34 @@ A full overview of LSST science drivers are detailed in the LSST overview paper 
 % LSST CBW Participants Drive > Presentations - Wednesday Afternoon > Slides for SC Rep Talks at LSST CBW (TVS)
 % LSSTBrokerWorkshop19 > SOC's Notes (private)
 
-The Transients and Variable Stars (TVS) Science Collaboration is focused on studies of intrinsically variable events (periodic and aperiodic), explosive and eruptive transients (e.g., supernovae), and extrinsic variables and transients (e.g., eclipsing binaries, microlensing).
-The TVS science goals include both improving the physical understanding of these objects (e.g., stellar evolution, high-energy astrophysics) and using them as distance markers and probes of their environment (e.g., mapping the Milky Way, characterizing the intracluster medium, and dark energy cosmology).
-Objects which fall under the TVS umbrella span a wide range of timescales and energy outputs, and their studies frequently involve multi-messenger (e.g., neutrinos, gravitational waves) and/or multi-wavelength observations that span the electromagnetic spectrum (e.g., fast radio bursts, gamma ray bursts, infrared-luminous transients). 
+The Transients and Variable Stars ( {TVS})  {Science Collaboration} is focused on studies of intrinsically variable events (periodic and aperiodic), explosive and eruptive transients (e.g., supernovae), and extrinsic variables and transients (e.g., eclipsing binaries, microlensing).
+The  {TVS} science goals include both improving the physical understanding of these objects (e.g., stellar evolution, high-energy astrophysics) and using them as distance markers and probes of their environment (e.g., mapping the Milky Way, characterizing the intracluster medium, and dark energy cosmology).
+Objects which fall under the  {TVS} umbrella span a wide range of timescales and energy outputs, and their studies frequently involve multi-messenger (e.g., neutrinos, gravitational waves) and/or multi-wavelength observations that span the electromagnetic spectrum (e.g., fast radio bursts, gamma ray bursts, infrared-luminous transients). 
 
 {\bf Data Access Timescales --}
-Some TVS science goals require the alerts be distributed to brokers within minutes in order to categorize objects and identify those which need rapid follow-up within hours, e.g., spectroscopy or multi-band photometry which provides a definitive classification and/or key astrophysical evidence of physical processes.
+Some  {TVS} science goals require the alerts be distributed to brokers within minutes in order to categorize objects and identify those which need rapid follow-up within hours, e.g., spectroscopy or multi-band photometry which provides a definitive classification and/or key astrophysical evidence of physical processes.
 For example, finding young supernovae within hours of explosion when the optical and near-ultraviolet spectrum exhibit the short-lasting signatures of shock breakout, which can constrain the radius of the progenitor star; identifying a $\lesssim$day-long exoplanet feature in a microlensing event; and discovering optical counterparts to high-energy (gamma-ray bursts), radio (fast radio bursts), or gravitational wave events.
-Of these science cases, it is only for fast radio bursts that some models predict the corresponding optical transient could be short lived, thus requiring immediate follow-up within minutes and a $60$ second alert latency.
-Other TVS science goals could be satisfied with access to the daily-updated Prompt Products Database (PPDB; \S~\ref{sec:alertproduction}) instead of alerts, but may use the alerts and brokers system for its infrastructure and software tools.
+Of these science cases, it is only for fast radio bursts that some models predict the corresponding optical  {transient} could be short lived, thus requiring immediate follow-up within minutes and a $60$ second alert latency.
+Other  {TVS} science goals could be satisfied with access to the daily-updated Prompt Products Database ( {PPDB}; \S~\ref{sec:alertproduction}) instead of alerts, but may use the alerts and brokers system for its infrastructure and software tools.
 For example, identifying supernovae that are nearing peak brightness in order to make the most efficient use of spectroscopic classification resources, or determining when an eclipsing binary has passed a quality threshold to warrant follow-up (e.g., orbital parameter errors have decreased below a limit).
 
 % In a survey of the TVS members' needs for alerts and brokers\footnote{Rachel Street, private communication.}, responses to a question about access to difference-image sources were about evenly divided between ``same-night" and ``three days or longer".
 % Respondents were also about equally divided between wanting alerts delivered by VOEvent stream and API subscriber, (more immediate use) or by an online page or email, corresponding to desires for more immediate use and a longer latency, respectively.
 
-{\bf Broker Features --}
-Triggering follow-up is the common thread among the broad array of TSV science use-cases for LSST alerts, but simple filtering -- applying limits on the alert packet contents -- is insufficient for this, and one or more of the following processes are required.
-(1) Associating same-night alerts for a new source is necessary to provide a color\footnote{Recall that alerts are issued for sources detected in a single difference-image, and if a source is new and not yet in the PPDB, none of its alerts during its first night of detection will contain association information.}, or an estimate of the same-night change in brightness, which is helpful to prioritize objects in need of rapid follow-up.
+{\bf  {Broker} Features --}
+Triggering follow-up is the common thread among the broad array of TSV science use-cases for  {LSST} alerts, but simple filtering -- applying limits on the alert packet contents -- is insufficient for this, and one or more of the following processes are required.
+(1) Associating same-night alerts for a new source is necessary to provide a color\footnote{Recall that alerts are issued for sources detected in a single difference-image, and if a source is new and not yet in the  {PPDB}, none of its alerts during its first night of detection will contain association information.}, or an estimate of the same-night change in brightness, which is helpful to prioritize objects in need of rapid follow-up.
 (2) Performing fits to, or feature extraction on, the 12-month historical light curve provided in the alert packet is necessary for classification -- and improved if brokers associate with alerts from $>12$ months prior in order to lengthen the historical light curve and prioritize objects for follow-up.
-(3) Cross-matching with external catalogs and/or obtaining a robust evaluation of host galaxy offset\footnote{The identification of a host galaxy is not always simply the nearest static-sky source, but requires a probabilistic assessment of the offset in effective radii and other galaxy attributes.} provides important contextual information -- and in some cases a photometric redshift -- for prioritizing follow-up.
-(4) Facilitating the activation of Target of Opportunity observations, either by notifying a human, automatically submitting packets to queue-scheduled facilities, or directly scheduling observations with robotic telescopes.
+(3) Cross-matching with external catalogs and/or obtaining a robust evaluation of host galaxy offset\footnote{The identification of a host galaxy is not always simply the nearest static-sky source, but requires a probabilistic assessment of the offset in effective radii and other galaxy attributes.} provides important contextual information -- and in some cases a  {photometric redshift} -- for prioritizing follow-up.
+(4) Facilitating the activation of Target of  {Opportunity} observations, either by notifying a human, automatically submitting packets to queue-scheduled facilities, or directly scheduling observations with robotic telescopes.
 This might be accomplished externally to the broker by interfacing with Target Observation Managers (TOMs; \S~\ref{sec:followup}).
 (5) Providing ways for users to simulate (past, present, or future) broker processing to characterize the selection biases.
 
 {\bf Challenges Faced --}
 First, it is acknowledged that some of the science-driven broker needs, such as feature extraction and processing simulated streams, will require considerable computational resources.
 Second, obtaining robust categorizations for objects with sparsely sampled light-curves, especially during the hours and days following the start of a photometric event, remains an open challenge.
-So does identifying the rare and unexpected ``needles in a haystack" -- without yet knowing exactly the characteristics of the needles! -- that LSST will be uniquely able to discover.
-In both cases the community is actively working on algorithm development (\S~\ref{sec:algorithms}).
+So does identifying the rare and unexpected ``needles in a haystack" -- without yet knowing exactly the characteristics of the needles! -- that  {LSST} will be uniquely able to discover.
+In both cases the community is actively working on  {algorithm} development (\S~\ref{sec:algorithms}).
 Third, creating TOMs which enable both rapid follow-up, and the construction of highly curated target lists to optimize the use of scarce follow-up resources, is a non-trivial aspect that the community is also actively working towards (\S~\ref{sec:followup}).
 
 
@@ -64,28 +64,28 @@ Third, creating TOMs which enable both rapid follow-up, and the construction of 
 % LSST CBW Participants Drive > Presentations - Wednesday Afternoon > Jones_SSSC_rep.pdf
 % LSSTBrokerWorkshop19 > SOC's Notes (private)
 
-The Solar System Science Collaboration (SSSC) focuses on studies of small bodies, asteroids and minor planets, such as finding and cataloging the near-earth asteroid (NEO) population for impact risk assessment, studying outbursts and emissions from asteroids, and building and characterizing the populations of the outer solar system like Kuiper Belt Objects (KBOs).
-In images, the SSSC's objects of interest can appear as point, trailed, or extended sources.
+The Solar System  {Science Collaboration} ( {SSSC}) focuses on studies of small bodies, asteroids and minor planets, such as finding and cataloging the near-earth asteroid ( {NEO}) population for impact risk assessment, studying outbursts and emissions from asteroids, and building and characterizing the populations of the outer solar system like Kuiper Belt Objects (KBOs).
+In images, the  {SSSC}'s objects of interest can appear as point, trailed, or extended sources.
 Multiple images separated by at least 30 minutes (and up to days) are required to confirm newly discovered moving objects that appear as point sources in individual images\footnote{For the faintest KBOs, sources are not detected in individual images and require shift-and-stack processing, but that is not a part of Prompt processing and does not lead to alerts.}.
-Longer-term photometric monitoring is required to characterize rotation, identify binary companions, and provide context for outbursts and activity. 
+Longer-term photometric  {monitoring} is required to characterize rotation, identify binary companions, and provide context for outbursts and activity. 
 
 {\bf Data Access Timescales --}
-The SSSC plans to use LSST alerts for those studies in two main ways.
+The  {SSSC} plans to use  {LSST} alerts for those studies in two main ways.
 The first way is to discover very fast moving objects such as NEOs, potentially hazardous asteroids (PHAs), and interstellar objects (e.g., 'Oumuamua; \citealt{Meech2017}).
 This would be done by linking alerts from multiple images in a given night, or from a single image if the object moves during an exposure and appears trailed, in order to trigger immediate follow-up observations to constrain the orbital parameters and photometric variability.
 The second way is to identify outbursts from sudden changes in size or brightness, and trigger immediate follow-up within hours.
 
-{\bf Broker Features --}
-These SSSC use cases for alerts would be enabled by brokers that can:
-(1) filter on the size and shape parameters measured for all difference image sources and included in the alerts;
+{\bf  {Broker} Features --}
+These  {SSSC} use cases for alerts would be enabled by brokers that can:
+(1) filter on the size and  {shape} parameters measured for all difference image sources and included in the alerts;
 (2) associate the detections of previously unknown moving objects that appear in multiple images during the night;
-(3) support access to the postage stamp LSST images;
-(4) maintain databases of solar system objects in order to associate new LSST alerts and update orbits in real time (especially for fast-moving objects);
-and/or (5) offer API ``pull" and ``push" functionality for, e.g., hourly orbit database updates or high-priority follow-up needs, respectively.
+(3) support access to the  {postage stamp}  {LSST} images;
+(4) maintain databases of solar system objects in order to associate new  {LSST} alerts and update orbits in real time (especially for fast-moving objects);
+and/or (5) offer  {API} ``pull" and ``push" functionality for, e.g., hourly orbit database updates or high-priority follow-up needs, respectively.
 Furthermore, direct connections with TOMs with web-based user interfaces to build samples, perform analysis, and vet targets for follow-up was also noted as highly desirable for solar system studies. 
 
 {\bf Challenges Faced --}
-There are several items identified by the SSSC that are in need of work in order to achieve their alerts-related science goals in the LSST era, such as: 
+There are several items identified by the  {SSSC} that are in need of work in order to achieve their alerts-related science goals in the  {LSST} era, such as: 
 the reliable identification of outburst activity; 
 fitting light curves with sparse data points; 
 error calculations for orbital predictions and ephemerides; 
@@ -99,24 +99,24 @@ optimizing follow-up resources.
 % LSST CBW Participants Drive > Presentations - Wednesday Afternoon > JS_SC_SMWLV_Presentation.pdf
 % LSSTBrokerWorkshop19 > SOC's Notes (private)
 
-The main LSST science goals of the Stars, Milky Way, and Local Volume (SMWLV) Science Collaboration are to understand the structure and assembly history of the Milky Way and Local Volume galaxies -- including the role of streams, clusters, bulges, arms, and dwarf satellites -- and the fundamental physical properties of stars within several hundred parsecs of the Sun.
-This will be done by building multi-dimensional maps from the LSST astrometric and photometric data which include position, kinematics, brightness, color, metallicity, and variability information. 
+The main  {LSST} science goals of the Stars, Milky Way, and Local Volume ( {SMWLV})  {Science Collaboration} are to understand the structure and assembly history of the Milky Way and Local Volume galaxies -- including the role of streams, clusters, bulges, arms, and dwarf satellites -- and the fundamental physical properties of stars within several hundred parsecs of the Sun.
+This will be done by building multi-dimensional maps from the  {LSST} astrometric and photometric data which include position, kinematics, brightness, color, metallicity, and variability information. 
 
 {\bf Data Access Timescales --}
-Although much of the SMWLV science goals will use the static-sky Data Release data products, in cases where follow-up with external resources is required to enable variability-related studies the Prompt products and alerts might also be used.
+Although much of the  {SMWLV} science goals will use the static-sky  {Data Release} data products, in cases where follow-up with external resources is required to enable variability-related studies the Prompt products and alerts might also be used.
 For example, studies of cataclysmic variables, eclipsing binaries, microlensing events, and stellar flares, outbursts, or magnetic activity.
 %%% of high proper-motion stars which are faint but nearby, or perhaps were kicked from stellar systems
 
-{\bf Broker Features --}
-For a broker to enable SMWLV science goals they should thus consider providing: 
+{\bf  {Broker} Features --}
+For a broker to enable  {SMWLV} science goals they should thus consider providing: 
 (1) photometric classification of variable stars;
 (2) light curve feature extraction and period determination;
 (3) cross-matching to external catalogs (e.g., to identify X-ray binaries); and
-(4) the ability to coordinate follow-up observations (or link with a TOM). 
-In addition, TOM systems that can handle large populations, reprioritize targets in real time, and automatically provide coordinates to, e.g., fill spare fibers of a MOS on an as-needed basis, would facilitate alerts-related SMWLV science.
+(4) the ability to coordinate follow-up observations (or link with a  {TOM}). 
+In addition,  {TOM} systems that can handle large populations, reprioritize targets in real time, and automatically provide coordinates to, e.g., fill spare fibers of a  {MOS} on an as-needed basis, would facilitate alerts-related  {SMWLV} science.
 
 {\bf Challenges Faced --}
-The main issues regarding alerts-related science that are currently being faced by the SMWLV team are: 
+The main issues regarding alerts-related science that are currently being faced by the  {SMWLV} team are: 
 developing algorithmic components for light curve classification;
 identifying anomalous star behavior in need of follow-up; 
 deblending techniques stars in crowded fields; and
@@ -129,25 +129,25 @@ It was also noted that all of this takes time and funding, the lack of which is 
 % LSST CBW Participants Drive > Presentations - Wednesday Afternoon > DESC_rbiswas
 % LSSTBrokerWorkshop19 > SOC's Notes (private)
 
-The primary goal of the Dark Energy Science Collaboration (DESC) is to perform a standalone stage IV dark energy experiment with the LSST data, using a full suite of cosmological probes such as weak lensing, galaxy clustering, supernovae (SNe), strong lensing, and baryon acoustic oscillations.
-The time-domain aspects of DESC's science goals which would use the LSST Prompt products and alert stream include SNe and strong lensing. 
+The primary goal of the Dark Energy  {Science Collaboration} ( {DESC}) is to perform a standalone stage  {IV} dark energy experiment with the  {LSST} data, using a full suite of cosmological probes such as weak lensing, galaxy clustering, supernovae (SNe), strong lensing, and baryon acoustic oscillations.
+The time-domain aspects of  {DESC}'s science goals which would use the  {LSST} Prompt products and alert stream include SNe and strong lensing. 
 
 {\bf Data Access Timescales --}
-To build a Hubble diagram the DESC aims to assemble a large sample of light curves for Type Ia supernovae (SNe\,Ia), standard{\it izable} candles that serve as cosmological distance indicators, all with well-sampled multi-band light curves and at least a subset with spectroscopic classifications.
+To build a Hubble diagram the  {DESC} aims to assemble a large sample of light curves for Type Ia supernovae (SNe\,Ia), standard{\it izable} candles that serve as cosmological distance indicators, all with well-sampled multi-band light curves and at least a subset with spectroscopic classifications.
 Since SNe\,Ia have a $\gtrsim$2 week-long rise time, a latency of days to weeks is acceptable for spectroscopic classifications, and so the Prompt products are generally sufficient to meet this science goal -- with some possible exceptions.
-For example, the standardization of SN\,Ia light curves might be improved by early-time observations that constrain the progenitor star and/or explosion mechanism\footnote{E.g., the radial distribution of $^{56}$Ni, or the presence of circumstellar material or a giant binary companion.}, but these require rapid follow-up within hours or days.
-Most of DESC's other SN-related science goals (e.g., galaxy peculiar velocities, weak lensing magnification, and strong gravitational lensing) require follow-up on days- to weeks-long timescales. 
+For example, the standardization of  {SN}\,Ia light curves might be improved by early-time observations that constrain the progenitor star and/or explosion mechanism\footnote{E.g., the radial distribution of $^{56}$Ni, or the presence of circumstellar material or a giant binary companion.}, but these require rapid follow-up within hours or days.
+Most of  {DESC}'s other  {SN}-related science goals (e.g., galaxy peculiar velocities, weak lensing magnification, and strong gravitational lensing) require follow-up on days- to weeks-long timescales. 
 One exception is the search for electromagnetic counterparts of gravitational wave events, which provide cosmological information, which requires same-night follow-up.
 
-{\bf Broker Features --}
-Should DESC decide to use alerts and brokers for its time-domain cosmology studies, the following features would be needed:
+{\bf  {Broker} Features --}
+Should  {DESC} decide to use alerts and brokers for its time-domain cosmology studies, the following features would be needed:
 (1) cross-matching to external catalogs (e.g., for host galaxy identification);
 (2) well-characterized filters and algorithms;
-(3) provenance for all output data;
-(4) support for version control with the ability to simulate reprocessing the stream at any point in the past for a robust understanding of selection biases (required for SN cosmology), and
-(5) support for postage stamp analysis (e.g., to enable searches for strongly lensed sources).
+(3)  {provenance} for all output data;
+(4) support for version control with the ability to simulate reprocessing the stream at any point in the past for a robust understanding of selection biases (required for  {SN} cosmology), and
+(5) support for  {postage stamp} analysis (e.g., to enable searches for strongly lensed sources).
 
-In addition, optimal use of scarce follow-up resources such as spectroscopy for SN cosmology would be enabled by a broker that can prioritize targets based in part on the likelihood of LSST obtaining future observations and generating a fully usable light curve.
+In addition, optimal use of scarce follow-up resources such as spectroscopy for  {SN} cosmology would be enabled by a broker that can prioritize targets based in part on the likelihood of  {LSST} obtaining future observations and generating a fully usable light curve.
 
 {\bf Challenges Faced --}
 DESC is actively working to assess which science goals are best met with the Prompt products and which will require alerts and brokers.
@@ -159,20 +159,20 @@ Working with members of the other science collaborations to share code and deriv
 % LSST CBW Participants Drive > Presentations - Wednesday Afternoon > coppi_agnsc_lsstbroker4.pdf
 % LSSTBrokerWorkshop19 > SOC's Notes (private)
 
-The main science goal of the Active Galactic Nuclei (AGN) Science Collaboration is to select 20-50 million AGN from among the billions of LSST galaxies, and characterize their brightness, color, and variability (on timescales from minutes to decades), in order to understand AGN evolution as a function of cosmic time, host galaxy type, larger environment, mergers and interactions, etc.
-Multi-wavelength studies that include, for example, radio properties, high-energy emission, and spectral emission lines, are necessary for comprehensive studies of the physics driving the AGN emission (e.g., reverberation mapping).
+The main science goal of the Active Galactic Nuclei ( {AGN})  {Science Collaboration} is to select 20-50 million  {AGN} from among the billions of  {LSST} galaxies, and characterize their brightness, color, and variability (on timescales from minutes to decades), in order to understand  {AGN} evolution as a function of cosmic time, host galaxy type, larger environment, mergers and interactions, etc.
+Multi-wavelength studies that include, for example, radio properties, high-energy emission, and spectral emission lines, are necessary for comprehensive studies of the physics driving the  {AGN} emission (e.g., reverberation mapping).
 
 {\bf Data Access Timescales --} 
-The timescale of AGN variability is driven by the size of the emitting material, and/or the orbital period in the case of binary black holes. 
-Obtaining follow-up within days to weeks is typically sufficient for most AGN science, and so the Prompt products database might be used instead of the alert stream.
-One exception might be instances of dormant black holds flaring due to the tidal disruption of stars, planets, or gas clouds -- of which LSST might find $\sim$1000 per year -- are important to catch early on, because physical information about, e.g., relativistic jets, is revealed within the first day(s).
-At the other end of the timescale, AGN light-curves outlast any single human astronomical survey, and so including archival data from decades prior is important for full analyses. 
+The timescale of  {AGN} variability is driven by the size of the emitting material, and/or the orbital period in the case of binary black holes. 
+Obtaining follow-up within days to weeks is typically sufficient for most  {AGN} science, and so the Prompt products database might be used instead of the alert stream.
+One exception might be instances of dormant black holds flaring due to the tidal disruption of stars, planets, or gas clouds -- of which  {LSST} might find $\sim$1000 per year -- are important to catch early on, because physical information about, e.g., relativistic jets, is revealed within the first day(s).
+At the other end of the timescale,  {AGN} light-curves outlast any single human astronomical survey, and so including archival data from decades prior is important for full analyses. 
 
-{\bf Broker Features --}
-Although the AGN community might have little need for real-time alerts, brokers -- or a separate set of software infrastructure dedicated to AGN science -- could provide other useful services that help with their longer-latency science goals.
-For example, what constitutes 'unusual' or 'interesting' behavior for AGN is not yet known, and may require the synthesis of LSST Prompt products and external time-domain multi-wavelength data to identify (i.e., associating alerts from multiple facilities).
-Broker classifications to reduce sample contamination from, e.g., supernovae, might also be needed for the AGN science goals.
-For the above reasons, AGN science would be enabled by brokers that:
+{\bf  {Broker} Features --}
+Although the  {AGN} community might have little need for real-time alerts, brokers -- or a separate set of software infrastructure dedicated to  {AGN} science -- could provide other useful services that help with their longer-latency science goals.
+For example, what constitutes 'unusual' or 'interesting' behavior for  {AGN} is not yet known, and may require the synthesis of  {LSST} Prompt products and external time-domain multi-wavelength data to identify (i.e., associating alerts from multiple facilities).
+Broker classifications to reduce sample contamination from, e.g., supernovae, might also be needed for the  {AGN} science goals.
+For the above reasons,  {AGN} science would be enabled by brokers that:
 (1) perform cross-matching to multi-wavelength source catalogs; 
 (2) ingest and associate alerts from multi-wavelength facilities; 
 (3) incorporate historical time-domain data sets; 
@@ -180,51 +180,51 @@ For the above reasons, AGN science would be enabled by brokers that:
 (5) interface with TOMs or other science-specific infrastructure.
 
 {\bf Challenges Faced --}
-The challenges currently being explored by the AGN science collaboration include developing algorithms to identify unusual or interesting behavior of AGN;
-how to gather and make available the wide diversity of existing AGN data sets;
-curating the future list of tens of millions of known AGN in the LSST era;
-and the intense computational resources that might be required to process the billions of photometry points for millions of AGN light curves.
+The challenges currently being explored by the  {AGN} science collaboration include developing algorithms to identify unusual or interesting behavior of  {AGN};
+how to gather and make available the wide diversity of existing  {AGN} data sets;
+curating the future list of tens of millions of known  {AGN} in the  {LSST} era;
+and the intense computational resources that might be required to process the billions of photometry points for millions of  {AGN} light curves.
 
-\subsection{LSST Education and Public Outreach}\label{ssec:sci_epo}
+\subsection{LSST  {Education and Public Outreach}}\label{ssec:sci_epo}
 % Rep: Lauren Corlies
 % Material sourced from:
 % LSST CBW Participants Drive > Presentations - Wednesday Afternoon > corlies_broker_meeting.pdf
 % LSSTBrokerWorkshop19 > SOC's Notes (private)
 
-Bringing the alert stream to the public is one of the goals of LSST's Education and Public Outreach (EPO) team.
-To highlight scientific advancements and promote the LSST, the EPO programs could, for example, use alerts to demonstrate the volume of discoveries and telescope observing patters, or to present new and exciting discoveries as they happen.
+Bringing the alert stream to the public is one of the goals of  {LSST}'s  {Education and Public Outreach} ( {EPO}) team.
+To highlight scientific advancements and promote the  {LSST}, the  {EPO} programs could, for example, use alerts to demonstrate the volume of discoveries and telescope observing patters, or to present new and exciting discoveries as they happen.
 These programs will serve a variety of audiences such as citizen scientists, amateur astronomers, educators and their students, science-center visitors, and the general public.
 
-{\bf Broker Features --}
-The LSST EPO programs would be assisted by brokers which
+{\bf  {Broker} Features --}
+The  {LSST}  {EPO} programs would be assisted by brokers which
 (1) make their results and output publicly web-accessible and shareable;
 (2) provide classifications and context for alerts' importance or uniqueness, in order to promote anomalous or superlative events or objects in the media; and
-(3) facilitate access to additional data in the Science Platform (e.g., contextual images, time-series for generating movies).
+(3) facilitate access to additional data in the  {Science Platform} (e.g., contextual images, time-series for generating movies).
 
 {\bf Challenges Faced --}
-Alerts on their own are not interesting to the public, and all EPO activities requires scientific context in order to assign importance.
-Exactly how to use brokers for this end, and how to include the priorities of the science collaborations in this effort, is a challenge that EPO is currently working on.
-Building visualization tools is a recognized area of overlap between EPO and the SC.
+Alerts on their own are not interesting to the public, and all  {EPO} activities requires scientific context in order to assign importance.
+Exactly how to use brokers for this end, and how to include the priorities of the science collaborations in this effort, is a challenge that  {EPO} is currently working on.
+Building visualization tools is a recognized area of overlap between  {EPO} and the  {SC}.
 
 \subsection{Summary of Scientific Needs for Alerts and Brokers}
 \label{ssec:sci_sum}
 
 \medskip
-\noindent {\bf Alert Distribution Latency Requirements.}
+\noindent {\bf  {Alert} Distribution Latency Requirements.}
 \begin{itemize}
-\item {\it Alert delivery within $1$ minute, for immediate follow-up}: the ability to obtain follow-up multi-band optical imaging within minutes of a potential optical counterpart to a fast radio burst is one of the few science drivers that might require a $60s$ alert delivery timescale (for some theoretical models).
-\item {\it Alert delivery within $5$--$10$ minutes, for follow-up within $30$ minutes to an hour (or hours)}: the ability to obtain follow-up multi-band optical imaging and/or spectroscopy within an hour is required for young supernovae physics, exoplanet features in microlensing events, the optical counterparts of gravitational waves, fast-moving asteroids that are trailed in a single exposure, moving objects that change in size or brightness which indicate an outburst event, and variable stars that deviate from their periodicity (e.g., outburst).
+\item {\it  {Alert} delivery within $1$ minute, for immediate follow-up}: the ability to obtain follow-up multi-band optical imaging within minutes of a potential optical counterpart to a fast radio burst is one of the few science drivers that might require a $60s$ alert delivery timescale (for some theoretical models).
+\item {\it  {Alert} delivery within $5$--$10$ minutes, for follow-up within $30$ minutes to an hour (or hours)}: the ability to obtain follow-up multi-band optical imaging and/or spectroscopy within an hour is required for young supernovae physics, exoplanet features in microlensing events, the optical counterparts of gravitational waves, fast-moving asteroids that are trailed in a single exposure, moving objects that change in size or brightness which indicate an outburst event, and variable stars that deviate from their periodicity (e.g., outburst).
 \item {\it Longer timescales}: There are also plenty of science goals that would use the alerts and brokers on longer timescales to monitor more slowly-evolving transients, variables, and moving objects, as discussed above.
 \end{itemize}
 
 \nrec
 %{System}{Audience}{Phase}
 {alerttimescale}
-{Understand the complete set of science cases that require Alert distribution within $1$ minute}
-{In this work, only the potential to identify optical counterparts to fast radio bursts has come forward as a science use case that requires a $1$ minute latency for Alert distribution. Most other science cases appear to be satisfied with Alert distribution within $5$--$10$ minutes, which is sufficient to enable follow-up within an hour or a few hours. However, the landscape of time-domain astrophysics is still evolving and new physical motivation for very rapid follow-up may yet be found.}
+{Understand the complete set of science cases that require  {Alert} distribution within $1$ minute}
+{In this work, only the potential to identify optical counterparts to fast radio bursts has come forward as a science use case that requires a $1$ minute latency for  {Alert} distribution. Most other science cases appear to be satisfied with  {Alert} distribution within $5$--$10$ minutes, which is sufficient to enable follow-up within an hour or a few hours. However, the landscape of time-domain astrophysics is still evolving and new physical motivation for very rapid follow-up may yet be found.}
 
 \medskip
-\noindent {\bf Common Broker Features.}
+\noindent {\bf Common  {Broker} Features.}
 \begin{itemize}
 \item {\it Filtering}: The ability to filter on alert contents and also derived properties, such as light curve features or the results of cross-matching.
 \item {\it Characterization:} The ability to perform light curve template fits and/or feature extraction, and to maintain databases of classified objects based on their light curves or other properties (e.g., orbital parameters for moving objects).
@@ -234,14 +234,14 @@ Building visualization tools is a recognized area of overlap between EPO and the
 \item {\it Public Access}: The ability to browse and search the alerts database, to view lists of the filtered alerts, and to visualize the alert contents.
 \end{itemize}
 
-All of these most common features are already a part of several brokers which are currently operating with ZTF alerts, such as ALeRCE, ANTARES, and Lasair.
+All of these most common features are already a part of several brokers which are currently operating with  {ZTF} alerts, such as ALeRCE,  {ANTARES}, and Lasair.
 
 \medskip
 \noindent {\bf Common Challenges Faced.}
 \begin{itemize}
 \item {\it Compute Resources}: meeting the computational needs required for intensive processing, such as light curve feature extraction.
 \item {\it Algorithmic Development}: how to classify sparsely sampled and/or early-time light curves; how to identify anomalies; efficient source association and cross-matching.
-\item {\it Software Development}: Building TOMs to work at the scale of LSST sample sizes, including tools for data visualization, searching and integrating a wide variety of archival data.
+\item {\it Software Development}: Building TOMs to work at the scale of  {LSST} sample sizes, including tools for data visualization, searching and integrating a wide variety of archival data.
 \item {\it Facilitating Collaboration}: How to work across the science collaborations to reduce redundant efforts and to enable more science, especially with limiting funding resources.
 \end{itemize}
 

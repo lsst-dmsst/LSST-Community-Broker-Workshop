@@ -5,18 +5,7 @@
 \shorttitle{LSST Community Brokers}
 \shortauthors{Guy, Bellm, Graham}
 
-%\usepackage{xcolor}
-%\usepackage[USenglish]{babel}
-%\usepackage[utf8]{inputenc}
-%\usepackage[T1]{fontenc}
-%\usepackage{comment}
-\usepackage{glossaries}  
-%\usepackage{enumitem}
 \usepackage{collect}
-%\usepackage{wrapfig}
-%\usepackage{graphicx}
-%\usepackage{hyperref}
-%\usepackage{booktabs}
 \usepackage[colorinlistoftodos]{todonotes}
 
 \graphicspath{{./}{./figures/}}
@@ -64,17 +53,19 @@
 \newcommand{\MLG}[2][]{\todo[color=red!30, #1]{MLG: #2}}
 \newcommand{\LPG}[2][]{\todo[color=cyan!30, #1]{LPG: #2}}
 
-% Glossary -- generated locally  with generateacronyms.py from lsst-texmf
-\input{aglossary.tex}
-\makenoidxglossaries
+%\newcommand{\docRef}{LSST-Community-Broker-Workshop}
+%\newcommand{\docUpstreamLocation}{\url{https://github.com/lsst-dmsst/LSST-Community-Broker-Workshop}}
 
 \begin{document}
-
-\title{Transient Alert Brokers in the LSST Era.}
 \input{authors}
-\input{abstract}
-\keywords{LSST, Astronomy, Astrophysics, Algorithms, Brokers, Community Brokers, Data Management, Alerts, Computing, HTC, Networking, Machine Learning, Cloud}
+\date{\today}
+\title{Transient Alert Brokers in the LSST Era.}
+\hypersetup{pdftitle={\@title}, pdfauthor={\@author}, pdfkeywords={\@keywords}}
 
+\input{abstract}
+\keywords{LSST, Astronomy, Astrophysics, Algorithms, Brokers, Community Brokers,  {Data Management}, Alerts, Computing,  {HTC}, Networking, Machine Learning, Cloud}
+
+% Only needed while this is a work in progress. Remove for circulation. 
 \listoftodos
 \clearpage
 
@@ -94,13 +85,21 @@
 \input{acknowledgements}
 % \facility{LSST}
 
-\printglossaries
-%\printnoidxglossary
+%\appendix
+% Remove this when you strart your paper
+%\input{appendix}
 
-% ----------------------------------------------------------------------
-\clearpage
-\bibliographystyle{plainnat}
+	% Include all the relevant bib files.
+% https://lsst-texmf.lsst.io/lsstdoc.html#bibliographies
+%\section{References} \label{sec:bib}
+%\bibliographystyle{plainnat}
+\bibliographystyle{yahapj}
 \bibliography{brokers}
+%\bibliography{brokers}
+
+% Make sure lsst-texmf/bin/generateAcronyms.py is in your path
+\section{Acronyms} \label{sec:acronyms}
+\input{acronyms.tex}
 
 %\listofchanges
 

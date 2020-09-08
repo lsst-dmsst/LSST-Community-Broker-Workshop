@@ -1,7 +1,4 @@
-% % % % % % % % % % % % % % % % % % % %
-% MLG texmf bib DocuShare put here as "@misc" for now
-
-@DocuShare{LDM-682,
+@misc{LDM-682,
   author =       {Eric Bellm and Robert Blum and Melissa Graham and Leanne Guy and {\v Z}eljko {Ivezi{\'c}} and William O’Mullane and John Swinbank},
   title =        "{Call for Letters of Intent for Community Alert Brokers}",
   year =         2019,
@@ -39,7 +36,7 @@
 }
 
 @misc{LSE-319,
-  author =       {M. Juri\'c, D. Ciardi, G.P. Dubois-Felsmann, L.P. Guy},
+  author =       {M. Juri\'c and D. Ciardi and G.P. Dubois-Felsmann and L.P. Guy},
   title =        "{LSST Science Platform Vision Document}",
   year =         2019,
   month =        jul,
@@ -74,8 +71,25 @@
   publisher=     {LSST},
 }
 
-% end of: MLG texmf bib DocuShare put here as "@misc" for now
-% % % % % % % % % % % % % % % % % % % %
+@misc{LDM-612,
+  author = {Eric Bellm and Robert Blum and Melissa Graham and Leanne Guy and {\v Z}eljko {Ivezi{\'c}} and William O’Mullane and Maria Patterson and John Swinbank and Beth Willman},
+  title = "{Plans and Policies for LSST Alert Distribution}",
+  year =    2019,
+  month =   jan,
+  publisher = "{Large Synoptic Survey Telescope Project}",
+  url =       {http://ls.st/LDM-612},
+}
+
+@misc{DMTN-028,
+  author = {Maria T. Patterson},
+  title = "{Benchmarking a distribution system for LSST alerts}",
+    year = 2018,
+  handle = {DMTN-028},
+    note = {LSST Data Management Technical Note},
+  publisher = "{Large Synoptic Survey Telescope Project}",
+     url = {https://dmtn-028.lsst.io},
+}
+
 @ARTICLE{2019RNAAS...3...26S,
        author = {{Smith}, K.~W. and {Williams}, R.~D. and {Young}, D.~R. and {Ibsen}, A. and
          {Smartt}, S.~J. and {Lawrence}, A. and {Morris}, D. and
@@ -116,24 +130,19 @@ archivePrefix = {arXiv},
       adsnote = {Provided by the SAO/NASA Astrophysics Data System}
 }
 
-@INBOOK{2016SPIE.9910E..0FS,
-       author = {{Saha}, Abhijit and {Wang}, Zhe and {Matheson}, Thomas and
-         {Narayan}, Gautham and {Snodgrass}, Richard and {Kececioglu}, John and
-         {Scheidegger}, Carlos and {Axelrod}, Tim and {Jenness}, Tim and
-         {Ridgway}, Stephen and {Seaman}, Robert and {Taylor}, Clark and
-         {Toeniskoetter}, Jackson and {Welch}, Eric and {Yang}, Shuo and
-         {Zaidi}, Tayeb},
-        title = "{ANTARES: progress towards building a 'broker' of time-domain alerts}",
-     keywords = {Astrophysics - Instrumentation and Methods for Astrophysics},
-    booktitle = {\procspie},
-         year = "2016",
-       volume = {9910},
-       series = {Society of Photo-Optical Instrumentation Engineers (SPIE) Conference Series},
-          eid = {99100F},
-        pages = {99100F},
-          doi = {10.1117/12.2232095},
-       adsurl = {https://ui.adsabs.harvard.edu/abs/2016SPIE.9910E..0FS},
-      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+@inproceedings{10.1117/12.2232095,
+author = {Abhijit Saha and Zhe Wang and Thomas Matheson and Gautham Narayan and Richard Snodgrass and John Kececioglu and Carlos Scheidegger and Tim Axelrod and Tim Jenness and Stephen Ridgway and Robert Seaman and Clark Taylor and Jackson Toeniskoetter and Eric Welch and Shuo Yang and Tayeb Zaidi},
+title = {{ANTARES: progress towards building a 'broker' of time-domain alerts}},
+volume = {9910},
+booktitle = {Observatory Operations: Strategies, Processes, and Systems VI},
+editor = {Alison B. Peck and Robert L. Seaman and Chris R. Benn},
+organization = {International Society for Optics and Photonics},
+publisher = {SPIE},
+pages = {128 -- 135},
+keywords = {time domain alert analysis , Event broker, LSST, VOEvent, transient response, big-data},
+year = {2016},
+doi = {10.1117/12.2232095},
+URL = {https://doi.org/10.1117/12.2232095}
 }
 
 @INPROCEEDINGS{2018SPIE10707E..11S,
@@ -348,26 +357,6 @@ archivePrefix = {arXiv},
     adsnote = {Provided by the SAO/NASA Astrophysics Data System}
 }
 
-
-@misc{LDM-612,
-  author = {Eric Bellm and Robert Blum and Melissa Graham and Leanne Guy and {\v Z}eljko {Ivezi{\'c}} and William O’Mullane and Maria Patterson and John Swinbank and Beth Willman},
-  title = "{Plans and Policies for LSST Alert Distribution}",
-  year =    2019,
-  month =   jan,
-  publisher = "{Large Synoptic Survey Telescope Project}",
-  url =       {http://ls.st/LDM-612},
-}
-
-@misc{DMTN-028,
-  author = {Maria T. Patterson},
-  title = "{Benchmarking a distribution system for LSST alerts}",
-    year = 2018,
-  handle = {DMTN-028},
-    note = {LSST Data Management Technical Note},
-  publisher = "{Large Synoptic Survey Telescope Project}",
-     url = {https://dmtn-028.lsst.io},
-}
-
 @inproceedings{2011Wang:2011:QDS:2063348.2063364,
   Acmid =        2063364,
   Address =      {New York, NY, USA},
@@ -576,4 +565,3 @@ archivePrefix = {arXiv},
        adsurl = {https://ui.adsabs.harvard.edu/abs/2018PASP..130c5003B},
       adsnote = {Provided by the SAO/NASA Astrophysics Data System}
 }
-

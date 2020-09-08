@@ -1,26 +1,26 @@
-\section{Event Brokers for the LSST Alert Stream (Leanne \& Melissa)} \label{sec:lsstbrokers}
+\section{Event Brokers for the  LSST Alert Stream (Leanne \& Melissa)} \label{sec:lsstbrokers}
 
 \MLG[inline]{``Event Brokers" section draft is complete. It is likely that the broker proposers might want to provide feedback on this summary.}
 
-Compared to ZTF, the LSST will produce $\sim10$ times more alerts per image, obtain images at a slightly faster rate, generate alerts of a slightly larger size, and produce alerts for all standard single-visit images (whereas ZTF alerts are produced for the $\sim40\%$ of the images from the public surveys).
-This adds up to a nightly data distribution that will be at least $\sim30$ times greater for LSST than for ZTF -- too big and too fast for the type of processing used in the past, e.g., bulk download and processing.
-Specialized software systems -- event brokers -- will be required for the community to make scientific use of the LSST alerts, and turn them into scientific discoveries and a new understanding of the time-domain universe.
+Compared to  {ZTF}, the  {LSST} will produce $\sim10$ times more alerts per image, obtain images at a slightly faster rate, generate alerts of a slightly larger size, and produce alerts for all standard single-visit images (whereas  {ZTF} alerts are produced for the $\sim40\%$ of the images from the public surveys).
+This adds up to a nightly data distribution that will be at least $\sim30$ times greater for  {LSST} than for  {ZTF} -- too big and too fast for the type of processing used in the past, e.g., bulk download and processing.
+Specialized software systems -- event brokers -- will be required for the community to make scientific use of the  {LSST} alerts, and turn them into scientific discoveries and a new understanding of the time-domain universe.
 
-The LSST call for letters of intent for community alert brokers \citep{LDM-682} generated 15 letters of intent from teams proposing to receive the full LSST alert stream.
+The  {LSST} call for letters of intent for community alert brokers \citep{LDM-682} generated 15 letters of intent from teams proposing to receive the full  {LSST} alert stream.
 Three letters of {\it non}-intent were also submitted from teams who were developing associate software (such as TOMs) and/or were planning to do science related to the alerts but were not actively developing a broker.
-Representatives of all 18 letter-writing teams were invited to participate in the CBW and contribute a presentation.
-The Data Management System will be capable of transmitting at least five full streams out of the alert distribution system \citep{LSE-61}.
-It is the role of the LSST Science Advisory Committee (SAC) to evaluate the proposals and decide which brokers will receive the full stream.
-The SAC assessed the letters of intent and, in December 2019, invited all 15 teams to submit full proposals (due June 2020).
+Representatives of all 18 letter-writing teams were invited to participate in the  {CBW} and contribute a presentation.
+The  {Data Management System} will be capable of transmitting at least five full streams out of the alert distribution system \citep{LSE-61}.
+It is the role of the  {LSST}  {Science Advisory Committee} ( {SAC}) to evaluate the proposals and decide which brokers will receive the full stream.
+The  {SAC} assessed the letters of intent and, in December 2019, invited all 15 teams to submit full proposals (due June 2020).
 The full criteria for broker evaluation are provided in \citet{LDM-612}; briefly, these criteria include the proposals' scientific potential in terms of range and impact; their ability to reach and serve a diverse community; and/or their integration and/or complementary with other software systems and platforms. 
 
-The proposing teams represented eight countries, with eight proposals from the USA, five from the UK and Europe, one from Chile, and one from South Africa; there were thirteen/two proposals from the northern/southern hemisphere, respectively.
+The proposing teams represented eight countries, with eight proposals from the  {USA}, five from the  {UK} and Europe, one from Chile, and one from South Africa; there were thirteen/two proposals from the northern/southern hemisphere, respectively.
 Eleven proposals stated that they would need the full stream, and four stated that they would want or could use stream that was pre-filtered based either on sky region (i.e., to match their follow-up capabilities or science goals) or object type (e.g., moving or stellar objects).
-Six proposals identified as science-specific; all six were interested in alerts for a certain object type (e.g., moving objects, transients, variable stars), and three were also only interested in alerts in certain locations (e.g., transient host type or sky area).
+Six proposals identified as science-specific; all six were interested in alerts for a certain object type (e.g., moving objects, transients, variable stars), and three were also only interested in alerts in certain locations (e.g.,  {transient} host type or sky area).
 Of the nine proposals that identified as general, five identified as having a focus on non-moving objects (i.e., transients and variables), and four identified as having a focus on method (e.g., machine learning techniques).
-With respect to cooperative interaction between brokers, two proposals stated they were already working together, with one passing ZTF alerts to the other.
+With respect to cooperative interaction between brokers, two proposals stated they were already working together, with one passing  {ZTF} alerts to the other.
 A further three proposals mentioned specific plans to interact with other brokers, and during the meeting a vision for a ``broker ecosystem" with peer-to-peer networking to enable science was a common discussion topic (see Section \ref{sec:conops} for more on this).
-In terms of development status, six proposals identified as being at the conceptual stage, three identified as being in active code development, and six reported that they were already processing ZTF alerts and supporting science (either in real time from the ZTF alert stream, or from bulk downloads). 
+In terms of development status, six proposals identified as being at the conceptual stage, three identified as being in active code development, and six reported that they were already processing  {ZTF} alerts and supporting science (either in real time from the  {ZTF} alert stream, or from bulk downloads). 
 Seven of the broker proposals -- and one letter of non-intent -- have publicly available documentation about and/or user interfaces to their alert processing systems; links and citations are provided in Table \ref{tab:brokers}.
 The letters of non-intent focus on providing external platforms for scientific analysis, such as those discussed in Sections \ref{ssec:interfaces_other} and \ref{ssec:interfaces_brokers}.
 
@@ -29,50 +29,50 @@ The letters of non-intent focus on providing external platforms for scientific a
 \centering
  \begin{tabular}{ll} 
  \hline
- Event Broker & Access, Documentation, or References \\
+ Event  {Broker} & Access, Documentation, or References \\
  \hline\hline
  ALeRCE & \url{alerce.science} \\
- AMPEL & \protect{\citet{ampel}} \\
- ANTARES & \url{antares.noao.edu},\ \protect{\citet{2016SPIE.9910E..0FS}}\\
+  {AMPEL} & \protect{\citet{ampel}} \\
+  {ANTARES} & \url{antares.noao.edu},\ \protect{\citet{2016SPIE.9910E..0FS}}\\
  Fink & \url{fink-broker.readthedocs.io} \\
  Lasair & \url{lasair.roe.ac.uk},\ \protect{\citet{2019RNAAS...3...26S}} \\
- MARS & \url{mars.lco.global} \\
+  {MARS} & \url{mars.lco.global} \\
  SASSy & \url{sassy.as.arizona.edu/sassy/ztf} \\
  Pitt-Broker & \url{pitt-broker.readthedocs.io} \\
  \hline
  \end{tabular}
 \end{table}
 
-In terms of functionality, all fifteen proposing teams stated their broker would be cross-matching the LSST alerts to external catalogs (mostly static-sky catalogs, but some to archival time-domain catalogs), and some mentioned cross-matching to time-domain events from other real-time sky surveys.
+In terms of functionality, all fifteen proposing teams stated their broker would be cross-matching the  {LSST} alerts to external catalogs (mostly static-sky catalogs, but some to archival time-domain catalogs), and some mentioned cross-matching to time-domain events from other real-time sky surveys.
 This common need prompted a discussion about how brokers could work together to build and share a centralized cross-matching service to reduce redundancy in effort and computational resources.
 Almost all teams stated that their broker would be using light curves for photometric classification, with a variety of methods such as feature extraction, template fitting, and machine learning.
 Most intended to have these light curve analyses operating in real time to filter the stream, and a few teams were focused on very rapid probabilistic classification of objects for follow-up observations. 
 Some brokers are planning to have the light curve analysis tools available to users to apply to aggregated alerts data in an ``non-streaming" mode (i.e., not embedded in a filter). 
 A few brokers intend to focus their light curve analysis tools on specific types of objects, such as variable stars or moving objects.
-At least four broker teams mentioned accessing the LSST Science Platform (Section \ref{sssec:interfaces_lsp_brokers}) to obtain additional information about events from the Prompt Products Database or the Data Release catalogs, which would assist with their classifications.
+At least four broker teams mentioned accessing the  {LSST}  {Science Platform} (Section \ref{sssec:interfaces_rsp_brokers}) to obtain additional information about events from the Prompt Products Database or the  {Data Release} catalogs, which would assist with their classifications.
 
 With respect to user access, most brokers plan to provide a web-based (in-browser) query interface, and many mentioned providing APIs, JupyterHub or notebook access, data export services (e.g., table downloads, nightly tarballs of classified alerts).
-Only a few brokers are planning to provide provenance functionality so that users can model the selection effects of the broker's algorithms.
+Only a few brokers are planning to provide  {provenance} functionality so that users can model the selection effects of the broker's algorithms.
 Provenance is necessary for, e.g., analyses of events rates or cosmological studies, but is quite a challenge to provide.
 About half of all broker proposals include functionality for users to define filters and receive alerts in real-time (and all brokers will have their in-house filters as well).
 At least one cloud-based broker is looking towards a ``freemium" cost model and making constainerized instances of their filters available to anyone. 
 About half of all broker teams stated an intention to release the results of their filters and classification as a stream of annotated alerts, and a couple intend to post public lists of objects prioritized by their need for follow-up.
 This output would be sent to, e.g., TOMs or other object-aggregating services\footnote{E.g., the Transient Name Server \url{wis-tns.weizmann.ac.il}}.
-With respect to follow-up, only a couple of brokers intend to have self-contained TOM-like functionality, interface directly with follow-up facilities, and allow users to trigger observations (TOMs are described in Section \ref{sec:followup_toms}).
+With respect to follow-up, only a couple of brokers intend to have self-contained  {TOM}-like functionality, interface directly with follow-up facilities, and allow users to trigger observations (TOMs are described in Section \ref{sec:followup_toms}).
 Comparing this list of planned broker functionality to the summary list of science-driven needed functionality at the end of Section \ref{sec:science}, we can see that there are no potential needs that remain uncovered by the full suite of broker proposals.
 
-{\bf Challenges faced by broker developers include:} scaling their alert processing from the ZTF stream to LSST; writing code for LSST-formatted alerts which will be different from ZTF alerts; how to provide provenance for users who need it; identifying their role within an evolving ``broker ecosystem"; reducing redundancy in algorithmic development (e.g., how to develop and share a cross-match service); and understanding what types of pre-filtered streams might be an option (from LSST and from other brokers).
+{\bf Challenges faced by broker developers include:} scaling their alert processing from the  {ZTF} stream to  {LSST}; writing code for  {LSST}-formatted alerts which will be different from  {ZTF} alerts; how to provide  {provenance} for users who need it; identifying their role within an evolving ``broker ecosystem"; reducing redundancy in algorithmic development (e.g., how to develop and share a cross-match service); and understanding what types of pre-filtered streams might be an option (from  {LSST} and from other brokers).
 Naturally, some of these challenges overlap with those identified from the science drivers discussed in Section \ref{sec:science}.
 
 \noindent {\bf To address these challenges, we make the following recommendations:}
 
 \nrec{System}{Audience}{Phase \textcolor{red}{Leanne was going to remember what was meant by this.}}
 
-\nrec{System}{Organize another meeting for the events brokering community}{Another face-to-face meeting for all those involved in brokering LSST alerts should be planned (to coincide with test alerts from commissioning?). This meeting should include not just the five selected for full stream transmission, but also representatives of downstream brokers, applied algorithms, science platforms, follow-up systems, etc.}
+\nrec{System}{Organize another meeting for the events brokering community}{Another face-to-face meeting for all those involved in brokering  {LSST} alerts should be planned (to coincide with test alerts from commissioning?). This meeting should include not just the five selected for full stream transmission, but also representatives of downstream brokers, applied algorithms, science platforms, follow-up systems, etc.}
 
 %5% How does this interact with technical decisions about stream contents, latencies, broker hosting location, etc.? 
 %%% What test data products are needed by brokers? ZTF is the precursor test facility for brokers to scale up on. The NSF is funding ZTF for this reason. What is the timeline for closer integration during commissioning?
-There are furthermore three recommendations introduced in Section \ref{sec:conops} which are relevant to addressing the above challenges: \textcolor{red}{REC-X} to further define the test streams during commissioning; \textcolor{red}{REC-X} to investigate the types of filtered streams that LSST could provide; and \textcolor{red}{REC-X} to investigate options for expanding access to the alert stream (to potentially allow transmission of $>5$ full streams).
+There are furthermore three recommendations introduced in Section \ref{sec:conops} which are relevant to addressing the above challenges: \textcolor{red}{REC-X} to further define the test streams during commissioning; \textcolor{red}{REC-X} to investigate the types of filtered streams that  {LSST} could provide; and \textcolor{red}{REC-X} to investigate options for expanding access to the alert stream (to potentially allow transmission of $>5$ full streams).
 
 
 % % % % % % % % % % % % % % % % % % % % % % % % 

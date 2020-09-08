@@ -1,0 +1,36 @@
+
+\noindent \textbf {REC-\ref {rec:brokerregistry}~Agency, Technologist}. \newline \textit {Long}. \newline See page \pageref {rec:brokerregistry}. \vspace {10pt}
+
+
+\noindent \textbf {REC-\ref {rec:alerttimescale}~Understand the complete set of science cases that require {Alert} distribution within $1$ minute}. \newline \textit {In this work, only the potential to identify optical counterparts to fast radio bursts has come forward as a science use case that requires a $1$ minute latency for {Alert} distribution. Most other science cases appear to be satisfied with {Alert} distribution within $5$--$10$ minutes, which is sufficient to enable follow-up within an hour or a few hours. However, the landscape of time-domain astrophysics is still evolving and new physical motivation for very rapid follow-up may yet be found.}. \newline See page \pageref {rec:alerttimescale}. \vspace {10pt}
+
+
+\noindent \textbf {REC-\ref {rec:alertcontents}~Review the contents of the {Alert} packets}. \newline \textit {DM Science should review the alert packet contents with the science collaborations, particularly the inclusion and size of the postage stamps, the variability characterization parameters, and details of the static sky association.}. \newline See page \pageref {rec:alertcontents}. \vspace {10pt}
+
+
+\noindent \textbf {REC-\ref {rec:ppdbpublic}~Investigate making replicas of the {PPDB} available, and the {PPDB} contents public}. \newline \textit {DM Science should consider whether the {PPDB} can be considered a public data product and how technically it might be made available to brokers. }. \newline See page \pageref {rec:ppdbpublic}. \vspace {10pt}
+
+
+\noindent \textbf {REC-\ref {rec:System}~Audience}. \newline \textit {Phase \textcolor {red}{Leanne was going to remember what was meant by this.}}. \newline See page \pageref {rec:System}. \vspace {10pt}
+
+
+\noindent \textbf {REC-\ref {rec:System}~Organize another meeting for the events brokering community}. \newline \textit {Another face-to-face meeting for all those involved in brokering {LSST} alerts should be planned (to coincide with test alerts from commissioning?). This meeting should include not just the five selected for full stream transmission, but also representatives of downstream brokers, applied algorithms, science platforms, follow-up systems, etc.}. \newline See page \pageref {rec:System}. \vspace {10pt}
+
+
+\noindent \textbf {REC-\ref {rec:expandstreams}~Investigate possibilities for expanding alert stream access}. \newline \textit {Investigate options for providing alerts to a larger number of brokers. Determine trade space of cost, science loss due to reduction in alert stream contents, and science gain due to expanded access to alerts.}. \newline See page \pageref {rec:expandstreams}. \vspace {10pt}
+
+
+\noindent \textbf {REC-\ref {rec:ppdbincloud}~Investigate the possibility of hosting the alert stream and/or {PPDB} in the cloud}. \newline \textit {Investigate the possibility of providing a cloud-hosted version of the alert stream and/or {PPDB} that is publicly accessible, including understanding what latency would be acceptable and how this interacts with other LSST requirements.}. \newline See page \pageref {rec:ppdbincloud}. \vspace {10pt}
+
+
+\noindent \textbf {REC-\ref {rec:teststreams}~Investigate the possibility of providing test streams for broker testing}. \newline \textit {Investigate the possibility of the project providing test streams of alerts for brokers and downstream {TOMS} to enable broker development, data challenges, and operations rehearsals }. \newline See page \pageref {rec:teststreams}. \vspace {10pt}
+
+
+\noindent \textbf {REC-\ref {rec:usercomputing}~Provide a more robust definition of “10\% of the LSST computational system”}. \newline \textit {Provide a more robust estimate of what “10\% of the LSST computational system” means, so that the scientists and future users can begin to figure out whether that will meet their needs, and prepare grants/proposals. }. \newline See page \pageref {rec:usercomputing}. \vspace {10pt}
+
+
+\noindent \textbf {REC-\ref {rec:filteredstreams}~Investigate the possibility of providing filtered streams}. \newline \textit {Clarify if/how the project could provide filtered streams, e.g Simple filters: {RA}/DEC, Magnitude, Spuriousness cuts? Image-free streams of alert packets? sources associated with past alerts? and provide estimate of how much the stream volume is reduced by these options. }. \newline See page \pageref {rec:filteredstreams}. \vspace {10pt}
+
+
+\noindent \textbf {REC-\ref {rec:expandedaccessstream}~Investigate options for expanding access to the alert stream}. \newline \textit {There is clear demand for expanding (near-) real time access to the full alert stream to ~tens of users, and a number of ways to get there: less information in alerts accepting longer latencies (5 minutes, not 60 seconds?) network of mirrors forwarding the stream cloud hosting}. \newline See page \pageref {rec:expandedaccessstream}. \vspace {10pt}
+

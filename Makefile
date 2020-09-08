@@ -1,25 +1,30 @@
-#for dependency you want all tex files  but for acronyms you do not want to include the acronyms file itself.
-tex=$(filter-out $(wildcard *glossary.tex) , $(wildcard *.tex))  
+DOCNAME = main
 
-DOC=main
-SRC= $(DOC).tex
-OBJ=$(SRC:.tex=.pdf)
+tex = $(filter-out $(wildcard *acronyms.tex) , $(wildcard *.tex))
 
-#Default when you type make
-all: $(OBJ)
+GITVERSION := $(shell git log -1 --date=short --pretty=%h)
+GITDATE := $(shell git log -1 --date=short --pretty=%ad)
+GITSTATUS := $(shell git status --porcelain)
+ifneq "$(GITSTATUS)" ""
+	GITDIRTY = -dirty
+endif
 
-$(OBJ): $(tex) aglossary.tex
-	latexmk -bibtex -xelatex -f $(SRC)
+export TEXMFHOME ?= lsst-texmf/texmf
 
-#The generateAcronyms.py  script is in lsst-texmf/bin - put that in the path
-aglossary.tex :$(tex) myacronyms.txt
-	generateAcronyms.py  -g  $(tex) 
-	generateAcronyms.py -u -g  $(tex) 
+$(DOCNAME).pdf: $(tex) brokers.bib authors.tex acronyms.tex
+	latexmk -bibtex -xelatex -f $(DOCNAME)
 
-clean :
+# Acronym tool allows for selection of acronyms based on tags - you may want more than DM
+acronyms.tex: $(tex) myacronyms.txt
+	$(TEXMFHOME)/../bin/generateAcronyms.py -t "DM" $(tex)
+
+# authors.tex:  authors.yaml
+#	python3 $(TEXMFHOME)/../bin/db2authors.py > authors.tex 
+
+.PHONY: clean
+clean:
 	latexmk -c
-	rm *.pdf *.bbl *.xdv
+	rm -f $(DOCNAME).bbl
+	rm -f $(DOCNAME).pdf
 
-
-glossaries:
-	makeglossaries $(DOC)
+.FORCE:

@@ -1,44 +1,11 @@
-AEON: Astronomical Event Observatory Network
-LPG:
-VIRGO:
-WA:
-DESC: Dark Energy Science Collaboration
-REC:
-USA:
-QDS:
-TOM:
-SSSC:
-MOS:
-WFIRST:
-LOI:
-VTP:
-LONI:
-AZ:
-HOW:
-CBW:
-LIGO:
-CA:
-PPDB:
-BATSE:
-APC:
-ANTARES: Arizona-NOAO Temporal Analysis and Response to Events System
-BACODINE:
-AGN:
-SN:
-IV:
-MLG:
-MPC:
-MARS:
-DE:
-SOAR:
-LAFS:
-END:
-AMPEL:
-NY:
-TOMS:
-TVS:
-SMWLV:
-GIT:
-ID:
-SEDM:
-TVSSC:
+# List acronyms in this file that are not found in lsst-texmf, or that have multiple definitions (put the one you want here).
+#
+# Line format:
+#   ACRONYM:Definition
+#
+# Example:
+#   MIA:Missing In Action
+AEON:Astronomical Event Observatory Network
+AGN:Active Galactic Nuclei
+AMPEL: Alert Management, Photometry and Evaluation of Light curves
+ANTARES:Arizona-NOAO Temporal Analysis and Response to Events System
