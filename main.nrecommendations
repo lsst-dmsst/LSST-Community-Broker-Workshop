@@ -14,7 +14,7 @@
 \noindent \textbf {REC-\ref {rec:System}~Audience}. \newline \textit {Phase \textcolor {red}{Leanne was going to remember what was meant by this.}}. \newline See page \pageref {rec:System}. \vspace {10pt}
 
 
-\noindent \textbf {REC-\ref {rec:System}~Organize another meeting for the events brokering community}. \newline \textit {Another face-to-face meeting for all those involved in brokering {LSST} alerts should be planned (to coincide with test alerts from commissioning?). This meeting should include not just the five selected for full stream transmission, but also representatives of downstream brokers, applied algorithms, science platforms, follow-up systems, etc.}. \newline See page \pageref {rec:System}. \vspace {10pt}
+\noindent \textbf {REC-\ref {rec:System2}~Organize another meeting for the events brokering community}. \newline \textit {Another face-to-face meeting for all those involved in brokering {LSST} alerts should be planned (to coincide with test alerts from commissioning?). This meeting should include not just the five selected for full stream transmission, but also representatives of downstream brokers, applied algorithms, science platforms, follow-up systems, etc.}. \newline See page \pageref {rec:System}. \vspace {10pt}
 
 
 \noindent \textbf {REC-\ref {rec:expandstreams}~Investigate possibilities for expanding alert stream access}. \newline \textit {Investigate options for providing alerts to a larger number of brokers. Determine trade space of cost, science loss due to reduction in alert stream contents, and science gain due to expanded access to alerts.}. \newline See page \pageref {rec:expandstreams}. \vspace {10pt}
